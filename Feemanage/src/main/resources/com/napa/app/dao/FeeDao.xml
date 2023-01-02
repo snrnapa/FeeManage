@@ -8,7 +8,7 @@
     </select>
 
     <select id="AllWorker" resultType="com.napa.app.entity.Fee">
-        SELECT * From fee  WHERE id = #{id}
+        SELECT * From fee  WHERE id = #{id}　order by id
     </select>
     
 </mapper>

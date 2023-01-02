@@ -14,7 +14,7 @@ public class FeeService {
 	@Autowired
 	FeeDao feedao;
 	
-	public Fee feeResult(Integer id) {
+	public List<Fee> feeResult(Integer id) {
 		Fee fee = new Fee();
 		fee.setId(id);
 		return this.feedao.feeResult(fee);

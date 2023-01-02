@@ -25,13 +25,18 @@
                 <th>total_fee</th>
                 <th>use_date</th>
             </tr>
-            <tr>
-                <td th:text="*{id}"></td>
-                <td th:text="*{round_trip}"></td>
-                <td th:text="*{total_fee}"></td>
-                <td th:text="*{use_date}"></td>
-
+            
+            
+            
+            <tr th:each="result:${fee}" th:object="${result}">
+                <td th:text="*{id}">id</td>
+                <td th:text="*{round_trip}">往復</td>
+                <td th:text="*{total_fee}">合計金額</td>
+                <td th:text="*{use_date}">使用日</td>
             </tr>
+            
+            
+
         </table>
     </div>
 

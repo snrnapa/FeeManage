@@ -7,7 +7,7 @@ import com.napa.app.entity.Fee;
 @Mapper
 public interface FeeDao {
 	
-	Fee feeResult(Fee fee);
+	List<Fee> feeResult(Fee fee);
 	
 	List<Fee> AllFeeResult();
 

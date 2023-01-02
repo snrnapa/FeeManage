@@ -1,5 +1,7 @@
 package com.napa.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +23,18 @@ public class FeeController {
 	
 	model.addAttribute("title", "Vinci_workerlist");
 	
-    if(feeform.getId() != null) {
-        Fee fee = feeservice.feeResult(feeform.getId());
-        model.addAttribute("fee", fee);
-    }
+
+//    if(feeform.getId() != null) {
+//        Fee fee = feeservice.feeResult(feeform.getId());
+//        model.addAttribute("fee", fee);
+//    }
+	
+	
+	
+	  if(feeform.getId() != null) {
+		  List<Fee> list = feeservice.feeResult(feeform.getId());
+	      model.addAttribute("fee", list);
+	  }
 	
 	return "index";
 
