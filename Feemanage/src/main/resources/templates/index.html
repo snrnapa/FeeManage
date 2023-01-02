@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="${title}">title</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p>TransportManage</p>
+    <form action="/workerlist/result" method="post">
+        <label>ID:<input class="input" type="text" name="id"></label><br>
+        <div><input class="search" type="submit" value="検索"/></div>
+    </form>
+    
+    
+    <form action="/workerlist/result" method="post">
+        <div><input class="list" type="submit" name="showList" value="一覧表示"/></div>
+    </form>
+
+    <div th:if="${fee} !=null" th:object="${fee}">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>round_trip</th>
+                <th>total_fee</th>
+                <th>use_date</th>
+            </tr>
+            <tr>
+                <td th:text="*{id}"></td>
+                <td th:text="*{round_trip}"></td>
+                <td th:text="*{total_fee}"></td>
+                <td th:text="*{use_date}"></td>
+
+            </tr>
+        </table>
+    </div>
+
+        <div th:if="${bookList} !=null">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>書籍名</th>
+                <th>巻</th>
+                <th>著者名</th>
+                <th>刊行日</th>
+            </tr>
+            <tr th:each="book:${bookList}" th:object="${book}">
+                <td th:text="*{id}">id</td>
+                <td th:text="*{bookName}">書籍名</td>
+                <td th:text="*{volumeNum}">巻</td>
+                <td th:text="*{authorName}">著者名</td>
+                <td th:text="*{publishedDate}">刊行日</td>
+            </tr>
+        </table>
+    </div>
+  </body>
+</html>
