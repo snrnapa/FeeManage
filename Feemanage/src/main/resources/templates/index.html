@@ -8,8 +8,13 @@
   <body>
   
   <p> Fee Result<p>
+  
+     <h2>・名前</h2>
+
     <p th:text = "${first}"> <p>
     <p th:text = "${last}"> <p>
+    
+     <h2>・支払金額</h2>
     <p th:text = "${sumfee}"> <p>
 
 
@@ -30,10 +35,7 @@
                 <td th:text="*{total_fee}">合計金額</td>
                 <td th:text="*{use_date}">使用日</td>
             </tr>
-            
-            
-            
-            
+
 
         </table>
     </div>
