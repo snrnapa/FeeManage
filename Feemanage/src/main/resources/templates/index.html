@@ -40,23 +40,5 @@
         </table>
     </div>
 
-        <div th:if="${bookList} !=null">
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>書籍名</th>
-                <th>巻</th>
-                <th>著者名</th>
-                <th>刊行日</th>
-            </tr>
-            <tr th:each="book:${bookList}" th:object="${book}">
-                <td th:text="*{id}">id</td>
-                <td th:text="*{bookName}">書籍名</td>
-                <td th:text="*{volumeNum}">巻</td>
-                <td th:text="*{authorName}">著者名</td>
-                <td th:text="*{publishedDate}">刊行日</td>
-            </tr>
-        </table>
-    </div>
   </body>
 </html>

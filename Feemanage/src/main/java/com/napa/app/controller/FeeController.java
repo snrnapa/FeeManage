@@ -15,6 +15,8 @@ import com.napa.app.service.FeeService;
 @RequestMapping("/workerlist")
 public class FeeController {
 	
+    Integer sum = 0;
+	
 	@Autowired
 	FeeService feeservice;
 	
@@ -34,6 +36,7 @@ public class FeeController {
 	  if(feeform.getId() != null) {
 		  List<Fee> list = feeservice.feeResult(feeform.getId());
 	      model.addAttribute("fee", list);
+	      
 	  }
 	
 	return "index";
