@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.napa.app.entity.Fee;
 import com.napa.app.form.FeeForm;
@@ -21,24 +22,34 @@ public class FeeController {
 	FeeService feeservice;
 	
     @RequestMapping("/result")
-    public String index(FeeForm feeform, String showList, Model model) {
-	
+    public String index(
+    		@RequestParam String fname,
+    		@RequestParam String lname,
+    		FeeForm feeform,
+    		String showList,
+    		Model model) {
+	sum = 0;
 	model.addAttribute("title", "Vinci_workerlist");
+	model.addAttribute("first", fname);
+	model.addAttribute("last", lname);
 
-	
 
-//    if(feeform.getId() != null) {
-//        Fee fee = feeservice.feeResult(feeform.getId());
-//        model.addAttribute("fee", fee);
-//    }
-	
 	
 	
 	  if(feeform.getId() != null) {
 		  List<Fee> list = feeservice.feeResult(feeform.getId());
+		  for (int i = 0; i < list.size(); i++) {
+			  sum += list.get(i).getTotal_fee();
+		  }
+		  
+		  
 	      model.addAttribute("fee", list);
+	      model.addAttribute("sumfee", sum);
+
 	      
 	  }
+	  
+
 	
 	return "index";
 

@@ -6,16 +6,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   </head>
   <body>
-    <p>TransportManage</p>
-    <form action="/workerlist/result" method="post">
-        <label>ID:<input class="input" type="text" name="id"></label><br>
-        <div><input class="search" type="submit" value="検索"/></div>
-    </form>
-    
-    
-    <form action="/workerlist/result" method="post">
-        <div><input class="list" type="submit" name="showList" value="一覧表示"/></div>
-    </form>
+  
+  <p> Fee Result<p>
+    <p th:text = "${first}"> <p>
+    <p th:text = "${last}"> <p>
+    <p th:text = "${sumfee}"> <p>
+
 
     <div th:if="${fee} !=null" th:object="${fee}">
         <table>
@@ -34,6 +30,8 @@
                 <td th:text="*{total_fee}">合計金額</td>
                 <td th:text="*{use_date}">使用日</td>
             </tr>
+            
+            
             
             
 
