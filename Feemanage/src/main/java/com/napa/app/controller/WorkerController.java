@@ -13,15 +13,19 @@ import com.napa.app.service.WorkerService;
 @Controller
 public class WorkerController {
 
+	
 	@Autowired
 	WorkerService workerservice;
+	
+    @RequestMapping("/")
+    public String main(Model model) {
+    	
+    	List<Worker> list = workerservice.AllWorkerSelect();
+    	model.addAttribute("Worker",list);
+	
 
-	@RequestMapping("/")
-	public String main(Model model) {
+	
+	return "main";
 
-		List<Worker> list = workerservice.AllWorkerSelect();
-		model.addAttribute("Worker", list);
-		return "main";
-
-	}
+    }
 }

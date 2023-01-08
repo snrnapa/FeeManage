@@ -8,6 +8,11 @@
 <body>
 	<p>TransportManage</p>
 
+
+
+
+
+
 	<div th:if="${Worker} !=null" th:object="${Worker}">
 
 		<table>
@@ -19,6 +24,7 @@
 			</tr>
 
 
+
 			<tr th:each="result:${Worker}" th:object="${result}">
 
 				<td th:text="*{id}">id</td>
@@ -27,8 +33,8 @@
 				<td>
 					<form action="/workerlist/result" method="post">
 						<input type="hidden" name="id" th:value="*{id}">
-						<input type="hidden" name="fname" th:value="*{first_name}">						
-						<input type="hidden" name="lname" th:value="*{last_name}">						
+						<input type="hidden" name="id" th:value="*{first_name}">						
+						<input type="hidden" name="id" th:value="*{last_name}">						
 						 <input type="submit" value="詳細">
 
 
@@ -38,6 +44,11 @@
 
 
 			</tr>
+
+
+
+
+
 
 
 		</table>
