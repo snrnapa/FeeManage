@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="${title}">title</title>
+<link href="/css/style.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>TransportManage</p>
+
+
+
+
+
+
+	<div th:if="${Worker} !=null" th:object="${Worker}">
+
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>FN</th>
+				<th>LN</th>
+				<th>詳細リンク</th>
+			</tr>
+
+
+
+			<tr th:each="result:${Worker}" th:object="${result}">
+
+				<td th:text="*{id}">id</td>
+				<td th:text="*{first_name}">往復</td>
+				<td th:text="*{last_name}">合計金額</td>
+				<td>
+					<form action="/workerlist/result" method="post">
+						<input type="hidden" name="id" th:value="*{id}">
+						<input type="hidden" name="id" th:value="*{first_name}">						
+						<input type="hidden" name="id" th:value="*{last_name}">						
+						 <input type="submit" value="詳細">
+
+
+					</form>
+				</td>
+
+
+
+			</tr>
+
+
+
+
+
+
+
+		</table>
+	</div>
+
+</body>
+</html>

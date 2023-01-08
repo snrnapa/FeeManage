@@ -24,6 +24,8 @@ public class FeeService {
 public List<Fee> AllFee(){
 	return this.feedao.AllFeeResult();
 }
+
+
 	
 
 }

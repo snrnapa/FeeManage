@@ -24,6 +24,7 @@ public class FeeController {
     public String index(FeeForm feeform, String showList, Model model) {
 	
 	model.addAttribute("title", "Vinci_workerlist");
+
 	
 
 //    if(feeform.getId() != null) {
