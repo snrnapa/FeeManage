@@ -10,5 +10,7 @@ public interface FeeDao {
 	List<Fee> feeResult(Fee fee);
 	
 	List<Fee> AllFeeResult();
+	
+	void add(Fee fee);
 
 }

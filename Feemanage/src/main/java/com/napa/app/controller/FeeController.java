@@ -15,43 +15,45 @@ import com.napa.app.service.FeeService;
 @Controller
 @RequestMapping("/workerlist")
 public class FeeController {
-	
-    Integer sum = 0;
-	
+
+	Integer sum = 0;
+
 	@Autowired
 	FeeService feeservice;
+
+	@RequestMapping("/result")
+	public String index(
+			@RequestParam String fname,
+			@RequestParam String lname,
+			FeeForm feeform,
+			String showList,
+			Model model) {
+		sum = 0;
+		model.addAttribute("title", "Vinci_workerlist");
+		model.addAttribute("first", fname);
+		model.addAttribute("last", lname);
+
+		if (feeform.getId() != null) {
+			List<Fee> list = feeservice.feeResult(feeform.getId());
+			for (int i = 0; i < list.size(); i++) {
+				sum += list.get(i).getTotal_fee();
+			}
+
+			model.addAttribute("fee", list);
+			model.addAttribute("sumfee", sum);
+
+		}
+
+		return "index";
+
+	}
 	
-    @RequestMapping("/result")
-    public String index(
-    		@RequestParam String fname,
-    		@RequestParam String lname,
-    		FeeForm feeform,
-    		String showList,
-    		Model model) {
-	sum = 0;
-	model.addAttribute("title", "Vinci_workerlist");
-	model.addAttribute("first", fname);
-	model.addAttribute("last", lname);
-
-
+	@RequestMapping("/add")
+	public String add(Fee fee) {
+		feeservice.FeeAdd(fee.getId(), fee.getRound_trip(), fee.getTotal_fee(),fee.getUse_date());
+		return "redirect:/";
+	}
 	
 	
-	  if(feeform.getId() != null) {
-		  List<Fee> list = feeservice.feeResult(feeform.getId());
-		  for (int i = 0; i < list.size(); i++) {
-			  sum += list.get(i).getTotal_fee();
-		  }
-		  
-		  
-	      model.addAttribute("fee", list);
-	      model.addAttribute("sumfee", sum);
-
-	      
-	  }
-	  
-
 	
-	return "index";
-
-    }
 }

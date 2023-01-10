@@ -8,6 +8,35 @@
 <body>
 	<p>TransportManage</p>
 
+	<div>
+
+		<form action="/workerlist/add" method="post">
+			<input type="text" name="id"> 
+			<input type="text" name="round_trip">
+			 <input type="text" name="total_fee">
+			<input type="date" name="use_date">
+			<input type="submit" value="登録">
+
+
+
+		</form>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<div th:if="${Worker} !=null" th:object="${Worker}">
 
 		<table>
@@ -26,10 +55,10 @@
 				<td th:text="*{last_name}">合計金額</td>
 				<td>
 					<form action="/workerlist/result" method="post">
-						<input type="hidden" name="id" th:value="*{id}">
-						<input type="hidden" name="fname" th:value="*{first_name}">						
-						<input type="hidden" name="lname" th:value="*{last_name}">						
-						 <input type="submit" value="詳細">
+						<input type="hidden" name="id" th:value="*{id}"> 
+						<input type="hidden" name="fname" th:value="*{first_name}"> 
+							<input type="hidden" name="lname" th:value="*{last_name}"> 
+							<input type="submit" value="詳細">
 
 
 					</form>
