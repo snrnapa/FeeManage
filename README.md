@@ -12,8 +12,8 @@ https://kanchi0914.hatenablog.com/entry/2020/01/19/225314
 - mysql×springboot 使い方
 https://qiita.com/fftcy-sttkm/items/57e8596820cff28ec682
 
-- ログイン画面
-https://qiita.com/curry__30/items/276ba2b9236066683ba4
+- Spring data JPA
+https://kanchi0914.hatenablog.com/entry/2020/01/19/225314
 
 - thループ文、css参考
 https://miruraku.com/java/thymeleaf/loop/
