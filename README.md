@@ -46,7 +46,7 @@ Spring　Bootを選んだ理由としましては、調べてて 「難しい設
 <h2 id="title2">2. Spring　Boot　開始！！</h2>
 
 プロジェクトを作成します。<br>
-今回使用している環境などは以下の通りです。
+今回使用使用している環境は次のとおりです。
 
 - windows10
 - Eclipse IDE for Java Developers Version: 2022-09 (4.25.0)
@@ -112,7 +112,7 @@ public class Fee {
     private Integer id;
     private Integer round_trip;
     private int total_fee;
-    private String use_date;
+    private String use_date; 
 }
 ```
 
@@ -146,6 +146,7 @@ import lombok.Data;
 public class FeeForm {
 	private Integer id;
 }
+
 ```
 
 <h3 id="title4-3">4-3.　Daoの作成</h3>
@@ -199,19 +200,17 @@ public interface FeeDao {
 - resources\com\napa\app\dao\WorkerDao.xml
 
 ```
-package com.napa.app.dao;
-import java.util.List;
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.napa.app.dao.WorkerDao">
 
-import org.apache.ibatis.annotations.Mapper;
-
-import com.napa.app.entity.Worker;
-@Mapper
-public interface WorkerDao {
-	
-
-	List<Worker> AllWorker();
-
-}
+    <select id="AllWorker" resultType="com.napa.app.entity.Worker">
+        SELECT * From worker order by id
+    </select>
+    
+</mapper>
 ```
 
 - resources\com\napa\app\dao\FeeDao.xml
@@ -222,30 +221,44 @@ public interface WorkerDao {
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.napa.app.dao.FeeDao">
-    <select id="feeResult" resultType="com.napa.app.entity.Fee">
-        SELECT * From fee  WHERE id = #{id}
-    </select>
+	<select id="feeResult" resultType="com.napa.app.entity.Fee">
+		SELECT * From fee WHERE id = #{id}
+	</select>
 
-    <select id="AllWorker" resultType="com.napa.app.entity.Fee">
-        SELECT * From fee  WHERE id = #{id}
-    </select>
-    
+	<select id="AllWorker" resultType="com.napa.app.entity.Fee">
+		SELECT * From fee WHERE id = #{id}　order by id
+	</select>
+
+	<insert id="add" parameterType="com.napa.app.entity.Fee">
+		insert into fee (id,round_trip,total_fee,use_date)
+		values (#{id},#{round_trip},#{total_fee},#{use_date})
+	</insert>
+
 </mapper>
 
 ```
 
-というように、こういった形で、使用するentityとsqlを記載するだけでOKなのです。<br>
+selectやinsertで囲まれている部分を見てみると、本当に中にSQL文がそのまま記載されています。
+こういった形で、使用するentityとsqlを記載するだけでOKなのです。<br>
 こういったアプリを作る際の私の印象としては、「いっぱいいろいろ書かないと行けなくて面倒そう、、、」というので全然手を動かしませんでしたが、気づいたらマッピングが終わっていました。びっくりです。<br>
 注意点として、xmlのディレクトリには注意してください。@mapperを使用する際は、daoと対応した形で配置する必要があります。
 
- - java\com\napa\app\dao\FeeDao.java
- - resources\com\napa\app\dao\FeeDao.xml
-<br>
- - java\com\napa\app\dao\WorkerDao.java
- - resources\com\napa\app\dao\WorkerDao.xml
+```
+ java\com\napa\app\dao\FeeDao.java
 
+ resources\com\napa\app\dao\FeeDao.xml
+ ```
+
+ ```
+java\com\napa\app\dao\WorkerDao.java
+
+resources\com\napa\app\dao\WorkerDao.xml
+```
+
+どちらもjava配下か、resources配下が違うのみで、その下は対応した形となっています。<br>
 私はこれが守れてなくて、何故動かないのか、３時間ほど悩んでました。（ぴえん）
-上記の通り対応する場所に配置するとあっさり動いちゃいました。
+上記の通り対応する場所に配置するとあっさり動いちゃいました。<br>
+こんな基本的なこと間違えないよ！と私も思って注視していませんでしたが、意外と意外と見落としがちなので、「動かない」と思ったときは、すぐに確認できるのでこちらを見てみてください。
 
 
 
@@ -253,7 +266,8 @@ public interface WorkerDao {
 イメージが湧きやすくなると思うので、先にviewの部分を記載します。<br>
 index.htmlが最初の授業員一覧の部分で、社員一覧が表示されています。<br>
 ここから従業員番号を選択すると、従業員の電車使用履歴情報（main.html)に遷移するようにしています。<br>
-どうしてもテーブルを使用してきれいに表示したかったので、inputをhiddenで隠して見えてないけどpostできるようにしてます。
+どうしてもテーブルを使用してきれいに表示したかったので、inputをhiddenで隠して見えてないけどpostできるようにしてます。<br>
+
 ```
 					<form action="/workerlist/result" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> <input
@@ -263,6 +277,10 @@ index.htmlが最初の授業員一覧の部分で、社員一覧が表示され�
 					</form>
 ```
 
+
+なお、今回はviewでThymeleafを使用していますが、当社の社員がTechBlogで記載していますので、詳細はそちらをご覧いただければと思います。<br>
+
+https://www.i-vinci.co.jp/techblog/664
 
  - index.html
 
@@ -369,13 +387,53 @@ index.htmlが最初の授業員一覧の部分で、社員一覧が表示され�
 
 <h3 id="title4-5">4-5.　Controllerの作成</h3>
 
+ゴールが見えてきました。
+最後はcontrollerの作成です。
+controllerはViewとModelの制御をしてくれる部分です。<br>
+Spring Bootでは、クラスに@controllerを付与するだけでcontrollerとして認識してくれます。
+また、@RequestMapping("/workerlist")という記載は、()内に記載されているパスへ遷移した際に、本アノテーションを付与したクラスの処理がされます。
+
+
 ```
 package com.napa.app.controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.napa.app.entity.Worker;
+import com.napa.app.service.WorkerService;
+
+@Controller
+public class WorkerController {
+
+	@Autowired
+	WorkerService workerservice;
+
+	@RequestMapping("/")
+	public String main(Model model) {
+
+		List<Worker> list = workerservice.AllWorkerSelect();
+		model.addAttribute("Worker", list);
+		return "main";
+
+	}
+}
+
+```
+```
+package com.napa.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.napa.app.entity.Fee;
 import com.napa.app.form.FeeForm;
@@ -384,48 +442,102 @@ import com.napa.app.service.FeeService;
 @Controller
 @RequestMapping("/workerlist")
 public class FeeController {
-	
+
+	Integer sum = 0;
+
 	@Autowired
 	FeeService feeservice;
-	
-    @RequestMapping("/result")
-    public String index(FeeForm feeform, String showList, Model model) {
-	
-	model.addAttribute("title", "Vinci_workerlist");
-	
-    if(feeform.getId() != null) {
-        Fee fee = feeservice.feeResult(feeform.getId());
-        model.addAttribute("fee", fee);
-    }
-	
-	return "index";
 
-    }
+	@RequestMapping("/result")
+	public String index(
+			@RequestParam String fname,
+			@RequestParam String lname,
+			FeeForm feeform,
+			String showList,
+			Model model) {
+		sum = 0;
+		model.addAttribute("title", "Vinci_workerlist");
+		model.addAttribute("first", fname);
+		model.addAttribute("last", lname);
+
+		if (feeform.getId() != null) {
+			List<Fee> list = feeservice.feeResult(feeform.getId());
+			for (int i = 0; i < list.size(); i++) {
+				sum += list.get(i).getTotal_fee();
+			}
+
+			model.addAttribute("fee", list);
+			model.addAttribute("sumfee", sum);
+
+		}
+
+		return "index";
+
+	}
+	
+	@RequestMapping("/add")
+	public String add(Fee fee) {
+		feeservice.FeeAdd(fee.getId(), fee.getRound_trip(), fee.getTotal_fee(),fee.getUse_date());
+		return "redirect:/";
+	}
 }
+
 ```
 
 
+
+少し駆け足で進めましたが、ここで作成したアプリを起動してみます。
+プロジェクトを右クリック→デバッグ→SpringBootアプリケーション　を押していくとできます。
+（もちろん、開始の方からでも大丈夫です）
+![](imgs/2023-01-29-22-44-48.png)
+
+ものすごく文句を言われてしまいました。
+![](imgs/2023-01-29-22-46-52.png)
+
+これは毎度のことなのですが、mysqlが起動できてません。
+mysqldで起動します。
+
+![](imgs/2023-01-29-22-48-17.png)
+無事起動しました！現在コンテキストパスにアクセスしているので、index.htmlが表示されています。
+それでは、「5000兆円欲しい」さんの詳細ボタンを押下してみます。
+
+![](imgs/2023-01-29-22-51-16.png)
+
+使用した履歴に加え、上部に合計金額を出力できています。
+合計金額の出力については、しれっとWorkerControllerにて処理を記載していました。
+
+```
+		if (feeform.getId() != null) {
+			List<Fee> list = feeservice.feeResult(feeform.getId());
+			for (int i = 0; i < list.size(); i++) {
+				sum += list.get(i).getTotal_fee();
+			}
+
+			model.addAttribute("fee", list);
+			model.addAttribute("sumfee", sum);
+
+		}
+```
+
+今回insert機能も追加しています。
+ID8の5000兆円欲しいさんについて入力してみましょう。
+（何も説明ないですが、上からID、往復、金額、日付の順で入力します）
+※金額がIntegerですので、5000兆円は手に入りません！！
+
+![](imgs/2023-01-29-23-00-33.png)
+登録ボタンを押して、もう一度詳細を見てみます。
+![](imgs/2023-01-29-23-00-46.png)
+無事追加されていることが確認できます。
+簡単にですが、アプリ完成です！！
+
+
+はまったこと
+
+![](imgs/2023-01-29-21-16-44.png)
+
+![](imgs/2023-01-29-21-22-21.png)
+
+
+
+
 <h2 id="title6">6. まとめ</h2>
-いかがでしたでしょうか。
-FCMを使うと、受信側の実装だけで簡単に通知の検証ができて便利ですね！
-今回はFirbaseのGUIから通知メッセージの送信をしましたが、次回は通知メッセージを送信するバックエンドの実装もしてみたいと思います。
-
-
-
-##　参考にしているサイト
-
-- spring bootの使い方（todolist)
-https://qiita.com/tokio_dev/items/f9fcdf7d65f3a8ab0f23
-
-- spring data jpaを使用してみて
-https://kanchi0914.hatenablog.com/entry/2020/01/19/225314
-
-- mysql×springboot 使い方
-https://qiita.com/fftcy-sttkm/items/57e8596820cff28ec682
-
-- Spring data JPA
-https://kanchi0914.hatenablog.com/entry/2020/01/19/225314
-
-- thループ文、css参考
-https://miruraku.com/java/thymeleaf/loop/
-
