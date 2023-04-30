@@ -44,7 +44,7 @@ public class FeeController {
 
 		}
 
-		return "index";
+		return "mainpage";
 
 	}
 	

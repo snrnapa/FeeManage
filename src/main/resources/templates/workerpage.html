@@ -8,30 +8,37 @@
 <body>
 	<p>TransportManage</p>
 
-	<div>
 
-		<form action="/workerlist/add" method="post">
-			<input type="text" name="id"> 
-			<input type="text" name="round_trip">
-			 <input type="text" name="total_fee">
-			<input type="date" name="use_date">
+
+		<form action="/workerlist/add" method="post" class="worker">
+		
+		<h3> New</h3>
+		
+		<div>
+			<label for="workerID">ID</label>
+			<input type="text" name="id" id="workerID"> 
+		</div>
+		
+		<div>
+		
+		 <label for="workerRD">往復</label>		
+			<input type="text" name="round_trip" id="workerRD">
+		</div>
+		<div>
+			<label for="workerfee">運賃（片道）</label>
+			 <input type="text" name="total_fee" id="workerfee">
+		</div>
+		<div>
+			<label for="workerdate">日付</label>
+			<input type="date" name="use_date" id="workerdate">
+		</div>
+		<div>
 			<input type="submit" value="登録">
+		</div>
 
 
 
 		</form>
-
-	</div>
-
-
-
-
-
-
-
-
-
-
 
 
 

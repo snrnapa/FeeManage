@@ -21,7 +21,7 @@ public class WorkerController {
 
 		List<Worker> list = workerservice.AllWorkerSelect();
 		model.addAttribute("Worker", list);
-		return "main";
+		return "workerpage";
 
 	}
 }
