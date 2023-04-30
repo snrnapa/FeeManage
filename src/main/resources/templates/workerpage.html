@@ -1,83 +1,104 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:text="${title}">title</title>
-<link href="/css/style.css" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title th:text="${title}">title</title>
+	<link href="/css/style.css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<p>TransportManage</p>
-
-
-
-		<form action="/workerlist/add" method="post" class="worker">
-		
-		<h3> New</h3>
-		
-		<div>
-			<label for="workerID">ID</label>
-			<input type="text" name="id" id="workerID"> 
-		</div>
-		
-		<div>
-		
-		 <label for="workerRD">往復</label>		
-			<input type="text" name="round_trip" id="workerRD">
-		</div>
-		<div>
-			<label for="workerfee">運賃（片道）</label>
-			 <input type="text" name="total_fee" id="workerfee">
-		</div>
-		<div>
-			<label for="workerdate">日付</label>
-			<input type="date" name="use_date" id="workerdate">
-		</div>
-		<div>
-			<input type="submit" value="登録">
-		</div>
-
-
-
+	
+	<div>
+		<form action="/workerlist/add" method="post" class="workerform">
+			<h3>New　History</h3>
+			<div>
+				<label for="workerID">ID</label>
+				 <input type="text" name="id">
+			</div>
+			<div>
+				<input type="checkbox" checked="checked" name="round_trip"value="Yes">　往復の場合はチェック
+			</div>
+			<div>
+				<label for="workerfee">運賃（片道）</label>
+				<input type="text"　name="total_fee" >
+			</div>
+			<div>
+				<label for="workerdate">日付</label>
+				<input type="date" name="use_date" id="date"></div>
+			<div>
+				<input type="submit" value="登録">
+			</div>
 		</form>
+		
+		<form action="/workerlist/add" method="post" class="workerform">
+			<h3>New　User</h3>
+			<div>
+				<label for="workerID">ID</label>
+				 <input type="text" name="id">
+			</div>
+			<div>
+				<input type="checkbox" checked="checked" name="round_trip"value="Yes">　往復の場合はチェック
+			</div>
+			<div>
+				<label for="workerfee">運賃（片道）</label>
+				<input type="text"　name="total_fee" >
+			</div>
+			<div>
+				<label for="workerdate">日付</label>
+				<input type="date" name="use_date" id="date"></div>
+			<div>
+				<input type="submit" value="登録">
+			</div>
+		</form>
+	</div>
+		
+		
+		
+		
+		
+		
 
-
-
-
-
-	<div th:if="${Worker} !=null" th:object="${Worker}">
+	<div th:if="${Worker} !=null" th:object="${Worker}" class="workerlist">
 
 		<table>
 			<tr>
 				<th>ID</th>
-				<th>FN</th>
-				<th>LN</th>
-				<th>詳細リンク</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>FeeManage</th>
 			</tr>
-
-
 			<tr th:each="result:${Worker}" th:object="${result}">
-
 				<td th:text="*{id}">id</td>
 				<td th:text="*{first_name}">往復</td>
 				<td th:text="*{last_name}">合計金額</td>
 				<td>
-					<form action="/workerlist/result" method="post">
-						<input type="hidden" name="id" th:value="*{id}"> 
-						<input type="hidden" name="fname" th:value="*{first_name}"> 
-							<input type="hidden" name="lname" th:value="*{last_name}"> 
-							<input type="submit" value="詳細">
+				<form action="/workerlist/result" method="post">
+					<input type="hidden" name="id" th:value="*{id}"> 
+					<input type="hidden" name="fname" th:value="*{first_name}"> 
+					<input type="hidden" name="lname" th:value="*{last_name}"> 
+					<input type="submit" value="詳細">
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
 
 
-					</form>
-				</td>
 
 
-
-			</tr>
-
-
-		</table>
-	</div>
-
+<script type="text/javascript">
+	
+	window.onload = function () {
+	    var date = new Date();
+	    date.setDate(date.getDate());
+	    var yyyy = date.getFullYear();
+	    var mm = ("0" + (date.getMonth() + 1)).slice(-2);
+	    var dd = ("0" + date.getDate()).slice(-2);
+	    document.getElementById("date").value = yyyy + '-' + mm + '-' + dd;
+	  }
+	
+	
+	
+</script>
 </body>
 </html>
