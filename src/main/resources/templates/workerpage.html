@@ -8,7 +8,7 @@
 <body>
 	<p>TransportManage</p>
 	
-	<div>
+<!-- 	<div>
 		<form action="/workerlist/add" method="post" class="workerform">
 			<h3>New　History</h3>
 			<div>
@@ -20,7 +20,7 @@
 			</div>
 			<div>
 				<label for="workerfee">運賃（片道）</label>
-				<input type="text"　name="total_fee" >
+				<input type="text" name="total_fee" >
 			</div>
 			<div>
 				<label for="workerdate">日付</label>
@@ -30,29 +30,31 @@
 			</div>
 		</form>
 		
-		<form action="/workerlist/add" method="post" class="workerform">
-			<h3>New　User</h3>
+	</div>
+ -->		
+		
+	<div>
+		<form action="addworker" method="post" class="workerform">
+			<h3>Add　User</h3>
 			<div>
-				<label for="workerID">ID</label>
+				<label for="id">ID</label>
 				 <input type="text" name="id">
 			</div>
 			<div>
-				<input type="checkbox" checked="checked" name="round_trip"value="Yes">　往復の場合はチェック
+				<label for="first_name">First Name</label>
+				<input type="text" name="first_name" >
 			</div>
 			<div>
-				<label for="workerfee">運賃（片道）</label>
-				<input type="text"　name="total_fee" >
+				<label for="lsat_name">Last Name</label>
+				<input type="text" name="last_name" >
 			</div>
-			<div>
-				<label for="workerdate">日付</label>
-				<input type="date" name="use_date" id="date"></div>
-			<div>
+
 				<input type="submit" value="登録">
 			</div>
 		</form>
+		
 	</div>
-		
-		
+
 		
 		
 		
@@ -66,17 +68,29 @@
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>FeeManage</th>
+				<th>Delete</th>
 			</tr>
 			<tr th:each="result:${Worker}" th:object="${result}">
 				<td th:text="*{id}">id</td>
-				<td th:text="*{first_name}">往復</td>
-				<td th:text="*{last_name}">合計金額</td>
-				<td>
-				<form action="/workerlist/result" method="post">
-					<input type="hidden" name="id" th:value="*{id}"> 
-					<input type="hidden" name="fname" th:value="*{first_name}"> 
-					<input type="hidden" name="lname" th:value="*{last_name}"> 
+				<td th:text="*{first_name}">Fist Name</td>
+				<td th:text="*{last_name}">Last_Name</td>
+				<td> 
+					<form action="/workerlist/result" method="post">
+						<input type="hidden" name="id" th:value="*{id}"> 
+						<input type="hidden" name="first_name" th:value="*{first_name}"> 
+						<input type="hidden" name="last_name" th:value="*{last_name}"> 
 					<input type="submit" value="詳細">
+					</form>
+				</td>
+				<td>
+					<form action="/delworker" method="post">
+						<input type="hidden" name="id" th:value="*{id}"> 
+						<input type="hidden" name="first_name" th:value="*{first_name}"> 
+						<input type="hidden" name="last_name" th:value="*{last_name}"> 
+						<input type="submit" value="削除">	
+					</form>
+				</td>
+					
 				</form>
 			</td>
 		</tr>

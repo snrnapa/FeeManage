@@ -19,6 +19,15 @@ public class WorkerService {
 public List<Worker> AllWorkerSelect(){
 	return this.workerdao.AllWorker();
 }
-	
+
+
+public void AddWorker(Integer id,String first_name,String last_name){
+	Worker worker = new Worker();
+	worker.setId(id);
+	worker.setFirst_name(first_name);
+	worker.setLast_name(last_name);
+	workerdao.WorkerAdd(worker);
+}
+
 
 }

@@ -271,8 +271,8 @@ index.htmlが最初の授業員一覧の部分で、社員一覧が表示され�
 ```
 					<form action="/workerlist/result" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> <input
-							type="hidden" name="fname" th:value="*{first_name}"> <input
-							type="hidden" name="lname" th:value="*{last_name}"> <input
+							type="hidden" name="first_name" th:value="*{first_name}"> <input
+							type="hidden" name="last_name" th:value="*{last_name}"> <input
 							type="submit" value="詳細">
 					</form>
 ```
@@ -367,8 +367,8 @@ https://www.i-vinci.co.jp/techblog/664
 				<td>
 					<form action="/workerlist/result" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> <input
-							type="hidden" name="fname" th:value="*{first_name}"> <input
-							type="hidden" name="lname" th:value="*{last_name}"> <input
+							type="hidden" name="first_name" th:value="*{first_name}"> <input
+							type="hidden" name="last_name" th:value="*{last_name}"> <input
 							type="submit" value="詳細">
 					</form>
 				</td>
@@ -450,15 +450,15 @@ public class FeeController {
 
 	@RequestMapping("/result")
 	public String index(
-			@RequestParam String fname,
-			@RequestParam String lname,
+			@RequestParam String first_name,
+			@RequestParam String last_name,
 			FeeForm feeform,
 			String showList,
 			Model model) {
 		sum = 0;
 		model.addAttribute("title", "Vinci_workerlist");
-		model.addAttribute("first", fname);
-		model.addAttribute("last", lname);
+		model.addAttribute("first", first_name);
+		model.addAttribute("last", last_name);
 
 		if (feeform.getId() != null) {
 			List<Fee> list = feeservice.feeResult(feeform.getId());

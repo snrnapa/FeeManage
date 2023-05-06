@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+body {
+  overflow-x: hidden;
+    margin: 0px;
+}
+  
+
 input[type="text"] {
   width: 70%;
   border-radius: 5px;
@@ -26,6 +32,16 @@ form.workerform {
   margin: 10px;
   border: medium #8ff0a4 solid;
 }
+
+p {
+  width : 100%;
+  background-color: #f5c211;
+  height: 50PX;
+    margin: 0px;
+    text-align: center;
+
+}
+
 
 
 .workerform div {

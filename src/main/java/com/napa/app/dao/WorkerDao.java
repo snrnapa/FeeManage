@@ -9,5 +9,6 @@ public interface WorkerDao {
 	
 
 	List<Worker> AllWorker();
+	void WorkerAdd(Worker worker);
 
 }

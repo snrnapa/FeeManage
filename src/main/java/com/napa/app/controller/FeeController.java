@@ -23,15 +23,14 @@ public class FeeController {
 
 	@RequestMapping("/result")
 	public String index(
-			@RequestParam String fname,
-			@RequestParam String lname,
+			@RequestParam String first_name,
+			@RequestParam String last_name,
 			FeeForm feeform,
 			String showList,
 			Model model) {
 		sum = 0;
-		model.addAttribute("title", "Vinci_workerlist");
-		model.addAttribute("first", fname);
-		model.addAttribute("last", lname);
+		model.addAttribute("first", first_name);
+		model.addAttribute("last", last_name);
 
 		if (feeform.getId() != null) {
 			List<Fee> list = feeservice.feeResult(feeform.getId());
