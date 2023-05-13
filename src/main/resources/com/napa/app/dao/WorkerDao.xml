@@ -13,6 +13,12 @@
 		insert into worker (id,first_name,last_name)
 		values (#{id},#{first_name},#{last_name})
     </insert>
+    
+    
+    <delete id="Deleteworker" parameterType="com.napa.app.entity.Worker">
+		delete from worker
+			where id = #{id}
+    </delete>
 
 
     

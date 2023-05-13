@@ -33,6 +33,13 @@ form.workerform {
   border: medium #8ff0a4 solid;
 }
 
+div.workerform{
+  width: 300px;
+  margin: 10px;
+  border: medium #ffa348 solid;
+
+}
+
 p {
   width : 100%;
   background-color: #f5c211;

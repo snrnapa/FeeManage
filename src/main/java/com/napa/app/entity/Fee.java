@@ -1,9 +1,13 @@
 package com.napa.app.entity;
 
+import java.sql.Date;
+
 public class Fee {
 //	feeテーブルより取得
     private Integer id;
     private String round_trip;
+	private int total_fee;
+    private Date use_date;  
     public Integer getId() {
 		return id;
 	}
@@ -22,12 +26,11 @@ public class Fee {
 	public void setTotal_fee(int total_fee) {
 		this.total_fee = total_fee;
 	}
-	public String getUse_date() {
+	public Date getUse_date() {
 		return use_date;
 	}
-	public void setUse_date(String use_date) {
+	public void setUse_date(Date use_date) {
 		this.use_date = use_date;
 	}
-	private int total_fee;
-    private String use_date;  
+
 }

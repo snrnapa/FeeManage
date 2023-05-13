@@ -11,6 +11,6 @@ public interface FeeDao {
 	
 	List<Fee> AllFeeResult();
 	
-	void add(Fee fee);
+	void Feeadd(Fee fee);
 
 }

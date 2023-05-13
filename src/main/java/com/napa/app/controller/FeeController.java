@@ -1,6 +1,7 @@
 package com.napa.app.controller;
 
 import java.util.List;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.napa.app.entity.Fee;
+import com.napa.app.entity.Worker;
 import com.napa.app.form.FeeForm;
 import com.napa.app.service.FeeService;
 
 @Controller
-@RequestMapping("/workerlist")
+@RequestMapping("/fee")
 public class FeeController {
 
 	Integer sum = 0;
@@ -29,8 +31,8 @@ public class FeeController {
 			String showList,
 			Model model) {
 		sum = 0;
-		model.addAttribute("first", first_name);
-		model.addAttribute("last", last_name);
+		model.addAttribute("first_name", first_name);
+		model.addAttribute("last_name", last_name);
 
 		if (feeform.getId() != null) {
 			List<Fee> list = feeservice.feeResult(feeform.getId());
@@ -44,15 +46,13 @@ public class FeeController {
 		}
 
 		return "mainpage";
-
 	}
 	
 	@RequestMapping("/add")
-	public String add(Fee fee) {
-		feeservice.FeeAdd(fee.getId(), fee.getRound_trip(), fee.getTotal_fee(),fee.getUse_date());
-		return "redirect:/";
+	public String Feeadd(Fee fee) {
+
+		feeservice.Feeadd(fee.getId(), fee.getRound_trip(), fee.getTotal_fee(),fee.getUse_date());
+		return "mainpage";
 	}
-	
-	
 	
 }

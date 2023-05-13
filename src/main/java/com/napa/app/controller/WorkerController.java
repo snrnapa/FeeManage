@@ -33,8 +33,8 @@ public class WorkerController {
 			}
 		
 		@RequestMapping("/delworker")
-		public String DeleteWorker(Worker worker) {
-			workerservice.DeleteWorker(worker.getId(),worker.getFirst_name(),worker.getLast_name());
+		public String Deleteworker(Worker worker) {
+			workerservice.Deleteworker(worker.getId());
 			return "redirect:/";
 		}
 		

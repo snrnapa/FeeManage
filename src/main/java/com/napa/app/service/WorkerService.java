@@ -29,5 +29,11 @@ public void AddWorker(Integer id,String first_name,String last_name){
 	workerdao.WorkerAdd(worker);
 }
 
+public void Deleteworker(Integer id){
+	Worker worker = new Worker();
+	worker.setId(id);
+	workerdao.Deleteworker(worker);
+}
+
 
 }

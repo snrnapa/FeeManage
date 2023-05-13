@@ -7,31 +7,7 @@
 </head>
 <body>
 	<p>TransportManage</p>
-	
-<!-- 	<div>
-		<form action="/workerlist/add" method="post" class="workerform">
-			<h3>New　History</h3>
-			<div>
-				<label for="workerID">ID</label>
-				 <input type="text" name="id">
-			</div>
-			<div>
-				<input type="checkbox" checked="checked" name="round_trip"value="Yes">　往復の場合はチェック
-			</div>
-			<div>
-				<label for="workerfee">運賃（片道）</label>
-				<input type="text" name="total_fee" >
-			</div>
-			<div>
-				<label for="workerdate">日付</label>
-				<input type="date" name="use_date" id="date"></div>
-			<div>
-				<input type="submit" value="登録">
-			</div>
-		</form>
-		
-	</div>
- -->		
+
 		
 	<div>
 		<form action="addworker" method="post" class="workerform">
@@ -55,11 +31,6 @@
 		
 	</div>
 
-		
-		
-		
-		
-
 	<div th:if="${Worker} !=null" th:object="${Worker}" class="workerlist">
 
 		<table>
@@ -75,7 +46,7 @@
 				<td th:text="*{first_name}">Fist Name</td>
 				<td th:text="*{last_name}">Last_Name</td>
 				<td> 
-					<form action="/workerlist/result" method="post">
+					<form action="/fee/result" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> 
 						<input type="hidden" name="first_name" th:value="*{first_name}"> 
 						<input type="hidden" name="last_name" th:value="*{last_name}"> 
@@ -85,34 +56,14 @@
 				<td>
 					<form action="/delworker" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> 
-						<input type="hidden" name="first_name" th:value="*{first_name}"> 
-						<input type="hidden" name="last_name" th:value="*{last_name}"> 
+
 						<input type="submit" value="削除">	
 					</form>
 				</td>
-					
-				</form>
-			</td>
+
 		</tr>
 	</table>
 </div>
 
-
-
-
-<script type="text/javascript">
-	
-	window.onload = function () {
-	    var date = new Date();
-	    date.setDate(date.getDate());
-	    var yyyy = date.getFullYear();
-	    var mm = ("0" + (date.getMonth() + 1)).slice(-2);
-	    var dd = ("0" + date.getDate()).slice(-2);
-	    document.getElementById("date").value = yyyy + '-' + mm + '-' + dd;
-	  }
-	
-	
-	
-</script>
 </body>
 </html>
