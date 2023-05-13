@@ -15,24 +15,23 @@ import com.napa.app.form.FeeForm;
 import com.napa.app.service.FeeService;
 
 @Controller
-@RequestMapping("/fee")
 public class FeeController {
-
-	Integer sum = 0;
-
+	
 	@Autowired
 	FeeService feeservice;
 
-	@RequestMapping("/result")
+
+	@RequestMapping("/fee")
 	public String index(
-			@RequestParam String first_name,
-			@RequestParam String last_name,
+			@RequestParam("first_name") String first_name,
+			@RequestParam("last_name") String last_name,
 			FeeForm feeform,
-			String showList,
 			Model model) {
-		sum = 0;
+		Integer sum = 0;
 		model.addAttribute("first_name", first_name);
 		model.addAttribute("last_name", last_name);
+		
+		
 
 		if (feeform.getId() != null) {
 			List<Fee> list = feeservice.feeResult(feeform.getId());
@@ -44,9 +43,14 @@ public class FeeController {
 			model.addAttribute("sumfee", sum);
 
 		}
-
 		return "mainpage";
 	}
+	
+	
+	
+	
+
+
 	
 	@RequestMapping("/add")
 	public String Feeadd(Fee fee) {
