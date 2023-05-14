@@ -5,7 +5,6 @@
 <mapper namespace="com.napa.app.dao.FeeDao">
 	<select id="feeResult" resultType="com.napa.app.entity.Fee">
 		SELECT * From fee WHERE id = #{id};
-		SELECT first_name , last_name From worker WHERE id = #{id};
 	</select>
 
 	<select id="AllWorker" resultType="com.napa.app.entity.Fee">

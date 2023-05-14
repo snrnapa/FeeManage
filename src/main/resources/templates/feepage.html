@@ -21,12 +21,12 @@
   </div>
 	
 	<div>
-		<form action="/fee/add" method="post" class="workerform">
+		<form action="/feeadd" method="post" class="workerform">
 			<h3>New　History</h3>
+<!-- 			postbackするときに、氏名が消えないようにpostしてます。 -->
 						<input type="" name="first_name" th:value="*{first_name}"> 
 						<input type="" name="last_name" th:value="*{last_name}"> 
 
-			
 			<div>
 				<label for="workerID">ID</label>
 				 <input type="text" name="id">

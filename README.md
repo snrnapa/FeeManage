@@ -1,6 +1,10 @@
 進捗状況
 
 
+	
+## Post内容の持続
+https://spring.pleiades.io/spring-framework/docs/5.2.x/javadoc-api/org/springframework/web/servlet/mvc/support/RedirectAttributes.html
+
 ## 駅情報API
 
 
