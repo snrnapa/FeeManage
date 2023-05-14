@@ -22,7 +22,7 @@ public class FeeController {
 	FeeService feeservice;
 
 
-	@PostMapping("/")
+	@RequestMapping("/fee")
 	public String index(
 			@RequestParam("first_name") String first_name,
 			@RequestParam("last_name") String last_name,
@@ -42,30 +42,32 @@ public class FeeController {
 		}
 	
 	
-////	POSTリレーをする場合
-//	@PostMapping("/feeadd")
-//	public String Feeadd(
-//			Fee fee,
-//			@RequestParam("first_name") String first_name,
-//			@RequestParam("last_name") String last_name,
-//			Model model) {
-//		model.addAttribute("first_name", first_name);
-//		model.addAttribute("last_name", last_name);
-//
-//
-//		feeservice.Feeadd(fee.getId(), fee.getRound_trip(), fee.getTotal_fee(),fee.getUse_date());
-//		return "feepage";
-//	}
-	
-//　POSTはID飲みにしてすべてDBで取得
+//	POSTリレーをする場合
 	@PostMapping("/feeadd")
 	public String Feeadd(
-			Fee fee,
+			FeeForm feeform,
+			@RequestParam("first_name") String first_name,
+			@RequestParam("last_name") String last_name,
+			@RequestParam("round_trip") String round_trip,
+			@RequestParam("total_fee") Integer total_fee,
+			@RequestParam("use_date") Date use_date,
 			Model model) {
+//		POSTした氏名をそのままビューへ
+		model.addAttribute("first_name", first_name);
+		model.addAttribute("last_name", last_name);
+		
+		Integer id = feeform.getId();
 
 
-		feeservice.Feeadd(fee.getId(), fee.getRound_trip(), fee.getTotal_fee(),fee.getUse_date());
+
+		feeservice.Feeadd(id, round_trip,total_fee,use_date);
+		List<Fee> feelist = feeservice.feeResult(id);
+		Integer sum = feeservice.Feecalc(feelist);
+		model.addAttribute("sumfee", sum);
+		model.addAttribute("fee", feelist);
 		return "feepage";
 	}
+	
+
 	
 }
