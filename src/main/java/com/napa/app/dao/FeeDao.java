@@ -1,4 +1,5 @@
 package com.napa.app.dao;
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -11,5 +12,6 @@ public interface FeeDao {
 
 	
 	void Feeadd(Fee fee);
+	void Feedel(Integer id , Date use_date);
 
 }

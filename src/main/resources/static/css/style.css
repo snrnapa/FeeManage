@@ -36,13 +36,32 @@ form.workerform {
 div.workerform{
   width: 300px;
   margin: 10px;
-  border: medium #ffa348 solid;
+  border: medium #3584e4 solid;
 
+}
+
+div.workername{
+  width: 200px;
+  margin: 10px;
+ text-align: center;
+   border: medium #ffa348 solid;
+}
+div > h2{
+
+ text-align: left;
+
+}
+
+
+div.mainlist{
+  width: 800px;
+  margin: 10px;
+ text-align: center;
 }
 
 p {
   width : 100%;
-  background-color: #f5c211;
+  background-color: rgb(98, 160, 234);
   height: 50PX;
     margin: 0px;
     text-align: center;

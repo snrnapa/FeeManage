@@ -1,7 +1,12 @@
 進捗状況
 
+## HTTPリクエストの基本
+https://progtext.net/tech/http-methods/#i-2
 
-	
+## getter setterが必要なパターン不要なパターン
+https://qiita.com/motoki1990/items/39102dfded1aadc54af1
+
+
 ## Post内容の持続
 https://spring.pleiades.io/spring-framework/docs/5.2.x/javadoc-api/org/springframework/web/servlet/mvc/support/RedirectAttributes.html
 

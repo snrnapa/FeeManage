@@ -37,10 +37,14 @@ public void Feeadd(Integer id , String round_trip , int total_fee , Date use_dat
 	fee.setRound_trip(round_trip);
 	fee.setTotal_fee(total_fee);
 	fee.setUse_date(use_date);
-
-
 	feedao.Feeadd(fee);
 	
 }
+
+public void Feedel(Integer id , Date use_date) {
+	feedao.Feedel(id,use_date);
+	
+}
+
 
 }

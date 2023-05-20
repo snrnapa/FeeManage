@@ -16,5 +16,9 @@
 		insert into fee (id,round_trip,total_fee,use_date)
 		values (#{id},#{round_trip},#{total_fee},#{use_date})
 	</insert>
+	
+	<insert id="Feedel" parameterType="com.napa.app.entity.Fee">
+		delete from fee where id = #{id} and use_date = #{use_date};
+	</insert>
 
 </mapper>
