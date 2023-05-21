@@ -20,6 +20,10 @@ public List<Worker> AllWorkerSelect(){
 	return this.workerdao.AllWorker();
 }
 
+public Worker OneWorkerSelect(Integer id){
+	return this.workerdao.OneWorker(id);
+}
+
 
 public void AddWorker(Integer id,String first_name,String last_name){
 	Worker worker = new Worker();

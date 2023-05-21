@@ -11,5 +11,6 @@ public interface WorkerDao {
 	List<Worker> AllWorker();
 	void WorkerAdd(Worker worker);
 	void Deleteworker(Worker worker);
+	Worker OneWorker(Integer id);
 
 }

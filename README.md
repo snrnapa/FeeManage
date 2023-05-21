@@ -1,5 +1,9 @@
 進捗状況
 
+
+## REST APIについて
+https://tarutaru-blogs.com/springboot-rest-api-tutorial/
+
 ## HTTPリクエストの基本
 https://progtext.net/tech/http-methods/#i-2
 

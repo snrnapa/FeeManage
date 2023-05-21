@@ -44,7 +44,7 @@
 				<td th:text="*{first_name}">Fist Name</td>
 				<td th:text="*{last_name}">Last_Name</td>
 				<td> 
-					<form action="/fee" method="post">
+					<form action="/fee" method="get">
 						<input type="hidden" name="id" th:value="*{id}"> 
 						<input type="hidden" name="first_name" th:value="*{first_name}"> 
 						<input type="hidden" name="last_name" th:value="*{last_name}"> 

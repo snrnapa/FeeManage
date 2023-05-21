@@ -8,6 +8,10 @@
         SELECT * From worker order by id
     </select>
     
+    <select id="OneWorker" resultType="com.napa.app.entity.Worker">
+        SELECT * From worker where id = #{id}
+    </select>
+    
 
     <insert id="WorkerAdd" parameterType="com.napa.app.entity.Worker">
 		insert into worker (id,first_name,last_name)
