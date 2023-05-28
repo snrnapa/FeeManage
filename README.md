@@ -1,6 +1,9 @@
 進捗状況
 
 
+## htmlのdeleteとputについて
+https://jxck.hatenablog.com/entry/why-form-dosent-support-put-delete
+
 ## DIとnewの違いについて
 https://qiita.com/uqichi/items/5f59817beb3dff9c0c1e
 

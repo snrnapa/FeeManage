@@ -27,7 +27,7 @@ public class WorkerController {
 	}
 		@RequestMapping("/addworker")
 			public String WorkerAdd(Worker worker) {
-				workerservice.AddWorker(worker.getId(),worker.getFirst_name(),worker.getLast_name());
+				workerservice.AddWorker(worker.getId(),worker.getFirst_name(),worker.getLast_name(),worker.getDept(),worker.getTeam());
 				return "redirect:/";
 			}
 		

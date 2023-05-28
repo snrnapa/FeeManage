@@ -25,7 +25,7 @@
   </div>
 	
 	<div>
-		<form action="/feeadd" method="post" class="inputform">
+		<form action="/fee" method="post" class="inputform">
 			<h3>New　History</h3>
 				<div>
 					<label for="workerID">ID</label>
@@ -67,8 +67,7 @@
                 <td th:text="'¥ ' + *{total_fee}">合計金額</td>
                 <td th:text="*{round_trip}">往復</td>
                 <td>
-	                <form action="/feedel" method="post">   
-	              
+	             <form action="/feedel" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> 
 						<input type="hidden" name="use_date" th:value="*{use_date}"> 
 						<input type="submit" value="削除" > 

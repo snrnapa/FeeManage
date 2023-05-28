@@ -4,19 +4,15 @@ import java.util.List;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.napa.app.dao.WorkerDao;
 import com.napa.app.entity.Fee;
 import com.napa.app.entity.Worker;
-import com.napa.app.form.FeeForm;
 import com.napa.app.service.FeeService;
 import com.napa.app.service.WorkerService;
 
@@ -42,12 +38,10 @@ public class FeeController {
 			model.addAttribute("fee", feelist);
 			model.addAttribute("sumfee", sum);
 			model.addAttribute("oneworker", oneworker);
-			
 				return "feepage";
-
 		}
 	
-	@PostMapping("/feeadd")
+	@PostMapping("/fee")
 	public String Feeadd(
 //			POSTした値を扱えるようにする。
 			@RequestParam("id") Integer id,
@@ -70,12 +64,18 @@ public class FeeController {
 	}
 	
 	
-//	POSTリレーをする場合
+//	RESTAPIの場合
+//	@DeleteMapping("/fee")
+	
+//	WEBアプリの場合
 	@PostMapping("/feedel")
 	public String Feedel(
 			@RequestParam("id") Integer id,
 			@RequestParam("use_date") Date use_date,
 			Model model){
+		
+		
+		feeservice.Feedel(id, use_date);
 		
 //		Workerと、Feeをリロードする。
 		List<Fee> feelist = feeservice.FeeGet(id);
