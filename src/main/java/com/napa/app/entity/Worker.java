@@ -8,6 +8,8 @@ public class Worker {
     private Integer id;
 	private String first_name;
     private String last_name;
+    private String dept;
+    private String team;
     public Integer getId() {
 		return id;
 	}
@@ -25,6 +27,18 @@ public class Worker {
 	}
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
+	}
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	public String getTeam() {
+		return team;
+	}
+	public void setTeam(String team) {
+		this.team = team;
 	}
 
 }

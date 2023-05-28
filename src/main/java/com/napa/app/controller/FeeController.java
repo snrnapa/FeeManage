@@ -1,5 +1,5 @@
 package com.napa.app.controller;
-
+	
 import java.util.List;
 import java.sql.Date;
 
@@ -25,30 +25,28 @@ public class FeeController {
 	
 	@Autowired
 	FeeService feeservice;
-
+	@Autowired
+	WorkerService workerservice;
+	
+//	従業員のFeeを取得する場合
 	@GetMapping("/fee")
 	public String index(
 			@RequestParam("id") Integer id,
-			FeeForm feeform,
-			WorkerService workerservice,
 			Model model) {
-//		Integer id = feeform.getId();
-//		model.addAttribute("id", id);
-//		model.addAttribute("first_name", first_name);
-//		model.addAttribute("first_name", first_name);
-//		Worker worker = workerservice.OneWorkerSelect(id);
-		FeeService feeservice = new FeeService();
-		List<Fee> feelist = feeservice.feeResult(id);
+		
+		Worker oneworker = workerservice.OneWorkerSelect(id);
+		List<Fee> feelist = feeservice.FeeGet(id);
+	
 		Integer sum = feeservice.Feecalc(feelist);
 		
 			model.addAttribute("fee", feelist);
 			model.addAttribute("sumfee", sum);
+			model.addAttribute("oneworker", oneworker);
 			
 				return "feepage";
 
 		}
 	
-//	POSTリレーをする場合
 	@PostMapping("/feeadd")
 	public String Feeadd(
 //			POSTした値を扱えるようにする。
@@ -57,19 +55,18 @@ public class FeeController {
 			@RequestParam("total_fee") Integer total_fee,
 			@RequestParam("use_date") Date use_date,
 			Model model) {
-//		POSTした氏名をそのままビューへ
-
-
 //		入力した値をDBへ登録する処理
 		feeservice.Feeadd(id, round_trip,total_fee,use_date);
-//		POSTBACKした際に、Feeが表示されるようにもう一度取得し直す。
-		List<Fee> feelist = feeservice.feeResult(id);
+		
+//		Workerと、Feeをリロードする。
+		List<Fee> feelist = feeservice.FeeGet(id);
+		Worker oneworker = workerservice.OneWorkerSelect(id);
 		Integer sum = feeservice.Feecalc(feelist);
-//		ビューへ返却する
-		String returnurl = 
+		
+		model.addAttribute("oneworker", oneworker);
 		model.addAttribute("sumfee", sum);
 		model.addAttribute("fee", feelist);
-		return "redirect:/fee";
+		return "feepage";
 	}
 	
 	
@@ -78,16 +75,19 @@ public class FeeController {
 	public String Feedel(
 			@RequestParam("id") Integer id,
 			@RequestParam("use_date") Date use_date,
-			@RequestParam("first_name") String first_name,
-			@RequestParam("last_name") String last_name,
 			Model model){
-//		POSTした氏名をそのままビューへ
-		model.addAttribute("first_name", first_name);
-		model.addAttribute("last_name", last_name);
-		model.addAttribute("id", id);
-		feeservice.Feedel(id, use_date);
+		
+//		Workerと、Feeをリロードする。
+		List<Fee> feelist = feeservice.FeeGet(id);
+		Worker oneworker = workerservice.OneWorkerSelect(id);
+		Integer sum = feeservice.Feecalc(feelist);
+		
+		
+		model.addAttribute("oneworker", oneworker);
+		model.addAttribute("sumfee", sum);
+		model.addAttribute("fee", feelist);
+	
 		return "feepage";
-//		return "redirect:/fee";
 	}
 	
 

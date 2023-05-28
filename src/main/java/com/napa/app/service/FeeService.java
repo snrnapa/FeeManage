@@ -17,7 +17,7 @@ public class FeeService {
 	@Autowired
 	FeeDao feedao;
 	
-	public List<Fee> feeResult(Integer id) {
+	public List<Fee> FeeGet(Integer id) {
 		return this.feedao.feeResult(id);
 	}
 	
@@ -29,8 +29,6 @@ public class FeeService {
 			return sum;
 	}
 	
-
-
 public void Feeadd(Integer id , String round_trip , int total_fee , Date use_date) {
 	Fee fee = new Fee();
 	fee.setId(id);
