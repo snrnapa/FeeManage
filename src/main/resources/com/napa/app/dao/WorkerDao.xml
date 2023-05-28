@@ -14,8 +14,8 @@
     
 
     <insert id="WorkerAdd" parameterType="com.napa.app.entity.Worker">
-		insert into worker (id,first_name,last_name)
-		values (#{id},#{first_name},#{last_name})
+		insert into worker (id,first_name,last_name,dept,team)
+		values (#{id},#{first_name},#{last_name},#{dept},#{team})
     </insert>
     
     
