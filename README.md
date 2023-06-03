@@ -1,4 +1,8 @@
-進捗状況
+
+## URL集
+http://localhost:8080/
+http://localhost:8080/h2-console
+
 
 
 ## htmlのdeleteとputについて
@@ -29,11 +33,3 @@ https://ekidata.jp/api/api_line.php
 
 ## 増幅用SQL
 
-insert into worker
-select
-    id + (select max(id) from worker),
-    first_name,
-    last_name
-from worker
-    where id < (select max(id) from worker)
-;
