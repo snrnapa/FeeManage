@@ -11,42 +11,14 @@ http://localhost:8080/h2-console
 ***
 
 ## 増幅用SQL
+以下2つのファイルを参考にしてください。
+以下はspring bootが起動されると、自動で実行されるクエリです。
+FeeManage/src/main/resources/data.sql/
+data.sql
+schema.sql
 
-### とりあえずworkerにレコード追加
-
- worker (
-   id, 
-   first_name, 
-   last_name, 
-   dept, 
-   team
- ) VALUES (
-    '1',
-    'pepepe',
-    'pepepe',
-    'HHB',
-    'UUY'
- );
-
-
-
-## すでにworkerをID重複せず、二倍にしていくクエリです。
- insert into 
- worker (
-   id, 
-   first_name, 
-   last_name, 
-   dept, 
-   team
- ) 
-    select id + (select max(id) from worker),
-    'pepepe',
-    'pepepe',
-    'HHB',
-    'UUY'
-    from worker;
-
-
+***
+***
 
 ## htmlのdeleteとputについて
 https://jxck.hatenablog.com/entry/why-form-dosent-support-put-delete
