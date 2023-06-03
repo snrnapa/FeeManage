@@ -1,7 +1,50 @@
 
 ## URL集
+
+
 http://localhost:8080/
+
+h2databaseのコンソール画面　spring boot起動後に入れるようになります。
+接続については、application.propertiesを見てください。
 http://localhost:8080/h2-console
+
+***
+
+## 増幅用SQL
+
+### とりあえずworkerにレコード追加
+
+ worker (
+   id, 
+   first_name, 
+   last_name, 
+   dept, 
+   team
+ ) VALUES (
+    '1',
+    'pepepe',
+    'pepepe',
+    'HHB',
+    'UUY'
+ );
+
+
+
+## すでにworkerをID重複せず、二倍にしていくクエリです。
+ insert into 
+ worker (
+   id, 
+   first_name, 
+   last_name, 
+   dept, 
+   team
+ ) 
+    select id + (select max(id) from worker),
+    'pepepe',
+    'pepepe',
+    'HHB',
+    'UUY'
+    from worker;
 
 
 
@@ -26,10 +69,7 @@ https://spring.pleiades.io/spring-framework/docs/5.2.x/javadoc-api/org/springfra
 
 ## 駅情報API
 
-
-
 https://ekidata.jp/api/api_line.php
 
 
-## 増幅用SQL
 
