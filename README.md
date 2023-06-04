@@ -1,5 +1,6 @@
 ポンコツじゃないメッセージです
 ## URL集
+ぽんこつ
 
 
 http://localhost:8080/
@@ -7,6 +8,9 @@ http://localhost:8080/
 h2databaseのコンソール画面　spring boot起動後に入れるようになります。
 接続については、application.propertiesを見てください。
 http://localhost:8080/h2-console
+
+![image](https://github.com/snrnapa/FeeManage/assets/60351331/724e251b-7498-4962-a173-651d05cf227f)
+
 
 ***
 
