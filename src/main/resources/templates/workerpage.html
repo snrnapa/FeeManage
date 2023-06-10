@@ -45,6 +45,7 @@
 				<th>Name</th>
 				<th>Dept/Team</th>
 				<th>FeeManage</th>
+				<th>Man_hours</th>
 				<th>Delete</th>
 			</tr>
 			<tr th:each="result:${Worker}" th:object="${result}">
@@ -54,7 +55,12 @@
 				<td> 
 					<form action="/fee" method="get">
 						<input type="hidden" name="id" th:value="*{id}"> 
-
+						<input type="submit" value="詳細">
+					</form>
+				</td>
+				<td> 
+					<form action="/man_hours" method="get">
+						<input type="hidden" name="id" th:value="*{id}"> 
 						<input type="submit" value="詳細">
 					</form>
 				</td>
