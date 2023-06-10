@@ -3,10 +3,12 @@ package com.napa.app.entity;
 import java.sql.Date;
 import java.sql.Time;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
 public class Man_hours {
 //	feeテーブルより取得
     private Integer id;
