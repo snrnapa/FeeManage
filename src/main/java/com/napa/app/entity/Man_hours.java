@@ -1,6 +1,7 @@
 package com.napa.app.entity;
 
 import java.sql.Date;
+import java.sql.Time;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,11 +9,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Fee {
+public class Man_hours {
 //	feeテーブルより取得
     private Integer id;
-    private String round_trip;
-	private int total_fee;
-    private Date use_date;  
-
+    private Date ope_dete;
+	private Time start_time;
+    private Time end_time;
+    private Integer project_no;
 }
+    
+    

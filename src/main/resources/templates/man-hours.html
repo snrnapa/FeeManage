@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="${title}">title</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+  
+  <p> Man-Hours</p>
+  
+  <div class="headmenu">
+  	    <button type="button" onclick="back()">Back</button>
+  
+  </div>
+  
+
+<div style = "display: flex;">
+
+  <div th:if="${oneworker} !=null" th:object="${oneworker}" class="resultform">
+	    <h3 th:text = " '・ID: ' + *{id}"> </h3>
+	    <h3 th:text = " '・氏名: ' + *{first_name} + '  ' + *{last_name} "> </h3>
+  	    <!-- <h3 th:text = "'・支払金額¥ ' + ${sumfee}"> </h3> -->
+  </div>
+	
+	<div>
+<!-- 		以下は、ここから工数表追加するのは普通すぎてつまらないので、別枠を検討中　直感的に表から編集できるのがスマートでいいかも
+		<form action="/fee" method="post" class="inputform">
+			<h3>New　Ope</h3>
+				<div>
+					<label for="workerID">ID</label>
+					 <input type="text" name="id" th:value="${oneworker.id}" readonly="readonly">
+				</div>
+				<div>
+					<input type="checkbox" checked="checked" name="round_trip"value="Yes">　往復の場合はチェック
+				</div>
+				<div>
+					<label for="workerfee">運賃（片道）</label>
+					<input type="text" name="total_fee" >
+				</div>
+				<div>
+					<label for="workerdate">日付</label>
+					<input type="date" name="use_date" id="date"></div>
+				<div>
+					<input type="submit" value="登録">
+				</div>
+		</form> -->
+	</div>
+</div>
+		
+<hr>
+
+
+    <div th:if="${man_hours} !=null" th:object="${man_hours}" class ="mainlist">
+        <table>
+            <tr>
+                <th>id</th> 
+                <th>ope_date</th>
+                <th>start_time</th>                
+                <th>end_time</th>
+                <th>customer</th>
+                <th>project_no</th>
+                
+            </tr>
+ 
+            <tr th:each="result:${man-hours}" th:object="${result}">
+                <td th:text="*{id}">従業員ID</td>
+                <td th:text="*{ope_date}"></td>
+                <td th:text="*{start_time}">開始時間</td>
+                <td th:text="*{end_time}">終了時間</td>
+                <td th:text="*{customer}">顧客先</td>
+                <td th:text="*{project_no}">プロジェクト番号</td>
+                
+<!--                 <td>
+	             <form action="/feedel" method="post">
+						<input type="hidden" name="id" th:value="*{id}"> 
+						<input type="hidden" name="use_date" th:value="*{use_date}"> 
+						<input type="submit" value="削除" > 
+		 			</form>
+	 				</td> -->
+            </tr>
+
+        </table>
+    </div>
+
+
+
+<!-- <script type="text/javascript">
+	
+	window.onload = function () {
+	    var date = new Date();
+	    date.setDate(date.getDate());
+	    var yyyy = date.getFullYear();
+	    var mm = ("0" + (date.getMonth() + 1)).slice(-2);
+	    var dd = ("0" + date.getDate()).slice(-2);
+	    document.getElementById("date").value = yyyy + '-' + mm + '-' + dd;
+	  }
+	function back(){
+		window.location.href = "/";
+	}
+
+</script> -->
+
+
+  </body>
+</html>
