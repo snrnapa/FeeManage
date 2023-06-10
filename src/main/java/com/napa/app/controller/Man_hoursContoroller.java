@@ -36,7 +36,7 @@ public class Man_hoursContoroller {
 		List<Man_hours> mhlist = mhservice.Man_hoursGet(id);
 	
 		
-			model.addAttribute("fee", mhlist);
+			model.addAttribute("man_hours", mhlist);
 			model.addAttribute("oneworker", oneworker);
 				return "man-hours";
 		}
