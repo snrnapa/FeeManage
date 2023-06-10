@@ -10,7 +10,7 @@
   <p> Fee Result</p>
   
   <div class="headmenu">
-  	    <button type="button" onclick="back()">Back</button>
+  	    <button type="button" onclick="back()" class="btn">Back</button>
   
   
   </div>
@@ -19,9 +19,9 @@
 <div style = "display: flex;">
 
   <div th:if="${oneworker} !=null" th:object="${oneworker}" class="resultform">
-	    <h3 th:text = " '・ID: ' + *{id}"> </h3>
-	    <h3 th:text = " '・氏名: ' + *{first_name} + '  ' + *{last_name} "> </h3>
-  	    <h3 th:text = "'・支払金額¥ ' + ${sumfee}"> </h3>
+	    <h3 th:text = " 'ID: ' + *{id}"> </h3>
+	    <h3 th:text = " '氏名: ' + *{first_name} + '  ' + *{last_name} "> </h3>
+  	    <h3 th:text = "'支払金額: ¥' + ${sumfee}"> </h3>
   </div>
 	
 	<div>
@@ -41,8 +41,8 @@
 				<div>
 					<label for="workerdate">日付</label>
 					<input type="date" name="use_date" id="date"></div>
-				<div>
-					<input type="submit" value="登録">
+				<div class="submit-div">
+					<input type="submit" value="登録" class="btn">
 				</div>
 		</form>
 	</div>
@@ -52,7 +52,7 @@
 
 
     <div th:if="${fee} !=null" th:object="${fee}" class ="mainlist">
-        <table>
+        <table class="workerlist">
             <tr>
                 <!-- <th>ID</th> -->
                 <th>use_date</th>
@@ -70,7 +70,7 @@
 	             <form action="/feedel" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> 
 						<input type="hidden" name="use_date" th:value="*{use_date}"> 
-						<input type="submit" value="削除" > 
+						<input type="submit" value="削除" class="btn">
 		 			</form>
 	 				</td>
             </tr>

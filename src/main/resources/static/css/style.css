@@ -10,7 +10,8 @@ p {
  padding: 1rem 2rem;
   border-top: 3px solid #000;
   border-bottom: 3px solid #000;
-  
+      text-align: center;
+      font-family: cursive;
 /*   width : 100%;
   background-color: rgb(98, 160, 234);
   height: 50PX;
@@ -18,10 +19,14 @@ p {
   text-align: center; */
 }
 
-
+.submit-div{
+    text-align: right;
+}
 .headmenu {
   border-bottom: dotted;
   padding-bottom: 10px;
+      margin-right: 30px;
+      text-align: right;
   
 /*   width : 100%;
   background-color: rgb(98, 160, 234);
@@ -31,7 +36,7 @@ p {
 }
 
 input[type="text"] {
-  width: 70%;
+  width: 80%;
   border-radius: 5px;
   padding: 10px;
 }
@@ -51,17 +56,25 @@ input[type="submit"].list {
   color: #FFFFFF
 }
 
-form.workerform {
-  width: 500px;
-  margin: 10px;
-  border: medium #8ff0a4 solid;
+
+.workerform {
+    position: relative;
+    margin: 1em 2em 1em 0.5em;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
 }
-
-div.workerform{
-  width: 300px;
-  margin: 10px;
-  border: medium #3584e4 solid;
-
+.workerform .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -30px;
+    left: 10px;
+    padding: 0 12px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
 }
 
 div.workername{
@@ -91,10 +104,22 @@ div.mainlist{
   margin: 10px;
 }
 
-.workerlist {
-  width: 1000px
-}
 
+.workerlist {
+ width: 100%;
+ text-align: center;
+ border-collapse: collapse;
+ border-spacing: 0;
+ border-top: solid 1px #778ca3;
+}
+.workerlist tr:nth-child(2n+1) {
+ background: #e9faf9;
+}
+.workerlist th,
+.workerlist td {
+ padding: 10px;
+ border-bottom: solid 1px #778ca3;
+}
 .workerlist td {
   text-align: center
 }
@@ -114,10 +139,29 @@ table th {
   background-color: #6699FF;
 }
 
+label{
+    display: block;
+}
 
+.submit-btn{
+    text-align: right;
+}
 
-
-
+.btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #819cd6;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
 
 
 

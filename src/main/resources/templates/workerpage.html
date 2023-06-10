@@ -9,9 +9,10 @@
 	<p>TransportManage</p>
 	<div>
 		<form action="addworker" method="post" class="workerform">
-			<h3>Add　User</h3>
+			<h3 class="box-title">Add　User</h3>
+
 			<div>
-				<label for="id">ID</label>
+				<label for="id">    ID    </label>
 				 <input type="text" name="id">
 			</div>
 			<div>
@@ -23,18 +24,18 @@
 				<input type="text" name="last_name" >
 			</div>
 			<div>
-				<label for="dept">dept</label>
+				<label for="dept">   dept   </label>
 				<input type="text" name="dept" >
 			</div>
 			<div>
-				<label for="team">team</label>
+				<label for="team">   team   </label>
 				<input type="text" name="team" >
 			</div>
-			
-				<input type="submit" value="登録">
+			<div class="submit-btn">
+				<input type="submit" value="登録" class="btn">
 			</div>
 		</form>
-		
+
 	</div>
 
 	<div th:if="${Worker} !=null" th:object="${Worker}" class="workerlist">
@@ -55,14 +56,14 @@
 					<form action="/fee" method="get">
 						<input type="hidden" name="id" th:value="*{id}"> 
 
-						<input type="submit" value="詳細">
+						<input type="submit" value="詳細" class="btn">
 					</form>
 				</td>
 				<td>
 					<form action="/delworker" method="post">
 						<input type="hidden" name="id" th:value="*{id}"> 
 
-						<input type="submit" value="削除">	
+						<input type="submit" value="削除" class="btn">
 					</form>
 				</td>
 
