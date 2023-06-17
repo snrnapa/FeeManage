@@ -1,8 +1,12 @@
 package com.napa.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.napa.app.entity.Worker;
@@ -17,9 +21,10 @@ public class WorkerController {
 	WorkerService workerservice;
 
 	@GetMapping("/")
-//	@ResponseBody
-	public Worker getWorkers() {
-		Worker worker = workerservice.AllWorkerSelect();
+	@ResponseBody
+	public List<Worker> getWorkers() {
+		List<Worker> worker = workerservice.AllWorkerSelect();
+		System.out.println((worker.get(0)).getId());
 		return worker;
 		
 //		Worker workers = workerservice.AllWorkerSelect();

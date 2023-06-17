@@ -1,4 +1,6 @@
 package com.napa.app.dao;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.napa.app.entity.Worker;
@@ -6,7 +8,7 @@ import com.napa.app.entity.Worker;
 public interface WorkerDao {
 	
 
-	Worker AllWorker();
+	List<Worker> AllWorker();
 	void WorkerAdd(Worker worker);
 	void Deleteworker(Worker worker);
 	Worker OneWorker(Integer id);
