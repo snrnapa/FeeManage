@@ -54,10 +54,11 @@ public void AddWorker(Integer id,String first_name,String last_name,String dept,
 //	workerdao.WorkerAdd(worker);
 }
 
-public void Deleteworker(Integer id){
-	Worker worker = new Worker();
-	worker.setId(id);
-	workerdao.Deleteworker(worker);
+public void Deleteworker(@PathVariable("id") Integer id){
+
+//	Optional<Worker> worker = workerrepository.findById(id);
+	workerrepository.deleteById(id);
+//	workerdao.Deleteworker(worker);
 }
 
 
