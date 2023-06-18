@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+body {
+  overflow-x: hidden;
+    margin: 10px;
+    width: 100%;
+}
+  
+p {
+ padding: 1rem 2rem;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+      text-align: center;
+      font-family: cursive;
+/*   width : 100%;
+  background-color: rgb(98, 160, 234);
+  height: 50PX;
+  margin: 0px;
+  text-align: center; */
+}
+
+.submit-div{
+    text-align: right;
+}
+.headmenu {
+  border-bottom: dotted;
+  padding-bottom: 10px;
+      margin-right: 30px;
+      text-align: right;
+  
+/*   width : 100%;
+  background-color: rgb(98, 160, 234);
+  height: 50PX;
+  margin: 0px;
+  text-align: center; */
+}
+
+input[type="text"] {
+  width: 80%;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+input[type="submit"].search {
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  background-color: #99CCCC;
+}
+
+input[type="submit"].list {
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  background-color: #008BBB;
+  color: #FFFFFF
+}
+
+
+.workerform {
+    position: relative;
+    margin: 1em 2em 1em 0.5em;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+}
+.workerform .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -30px;
+    left: 10px;
+    padding: 0 12px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
+}
+
+div.workername{
+  width: 200px;
+  margin: 10px;
+ text-align: center;
+   border: medium #ffa348 solid;
+}
+div > h2{
+
+ text-align: left;
+
+}
+
+
+div.mainlist{
+  width: 800px;
+  margin: 10px;
+ text-align: center;
+}
+
+
+
+
+
+.workerform div {
+  margin: 10px;
+}
+
+
+.workerlist {
+ width: 100%;
+ text-align: center;
+ border-collapse: collapse;
+ border-spacing: 0;
+ border-top: solid 1px #778ca3;
+}
+.workerlist tr:nth-child(2n+1) {
+ background: #e9faf9;
+}
+.workerlist th,
+.workerlist td {
+ padding: 10px;
+ border-bottom: solid 1px #778ca3;
+}
+.workerlist td {
+  text-align: center
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+table th {
+  background-color: #6699FF;
+}
+
+label{
+    display: block;
+}
+
+.submit-btn{
+    text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #819cd6;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+
+
+.resultform {
+  border: none;
+  background-color: #f5f5f5;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin: 10px;
+}
+
+.resultform:focus {
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+.inputform {
+  border: none;
+  background-color: #f5f5f5;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin: 10px;
+}
+
+.inputform:focus {
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}

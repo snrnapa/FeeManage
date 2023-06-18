@@ -1,15 +1,14 @@
 package com.napa.app.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-
-
-
-
-
+@Entity
 public class Worker {
 //	workerテーブルより取得
 	
-
+	@Id
     private Integer id;
 	private String first_name;
     private String last_name;
