@@ -3,9 +3,10 @@ package com.napa.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +16,7 @@ import com.napa.app.service.WorkerService;
 @RestController
 //@Controller
 @CrossOrigin(origins = "*")
-public class WorkerController {
+public class WorkerController{
 
 	@Autowired
 	WorkerService workerservice;
@@ -30,13 +31,17 @@ public class WorkerController {
 //		Worker workers = workerservice.AllWorkerSelect();
 //		return workers;
 
-
 	}
-//		@RequestMapping("/addworker")
-//			public String WorkerAdd(Worker worker) {
-//				workerservice.AddWorker(worker.getId(),worker.getFirst_name(),worker.getLast_name(),worker.getDept(),worker.getTeam());
-//				return "redirect:/";
-//			}
+		@PostMapping("/")
+//		@ResponseBody
+		
+			public List<Worker> AddWorker(@RequestBody Worker worker) {
+				workerservice.AddWorker(worker.getId(),worker.getFirst_name(),worker.getLast_name(),worker.getDept(),worker.getTeam());
+				List<Worker> workers = workerservice.AllWorkerSelect();
+				return workers;
+				
+				
+			}
 //		
 //		@RequestMapping("/delworker")
 //		public String Deleteworker(Worker worker) {
