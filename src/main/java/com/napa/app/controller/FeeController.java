@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,32 +49,21 @@ public class FeeController {
 		}
 	
 	@PostMapping("/fee")
-	public String Feeadd(
-//			POSTした値を扱えるようにする。
-			@RequestParam("id") Integer id,
-			@RequestParam("round_trip") String round_trip,
-			@RequestParam("total_fee") Integer total_fee,
-			@RequestParam("use_date") Date use_date,
-			Model model) {
+	@ResponseBody
+	public Object[] Feeadd(@RequestBody Fee fee){
 //		入力した値をDBへ登録する処理
-		feeservice.Feeadd(id, round_trip,total_fee,use_date);
-		
+		feeservice.Feeadd(fee);
+		Object[] array = new Object[2];
+		Integer id = fee.getId();
 //		Workerと、Feeをリロードする。
-		List<Fee> feelist = feeservice.FeeGet(id);
-		Worker oneworker = workerservice.OneWorkerSelect(id);
-		Integer sum = feeservice.Feecalc(feelist);
+		array[0] = feeservice.FeeGet(id);
+		array[1] = workerservice.OneWorkerSelect(id);
 		
-		model.addAttribute("oneworker", oneworker);
-		model.addAttribute("sumfee", sum);
-		model.addAttribute("fee", feelist);
-		return "feepage";
+		return array;
 	}
 	
 	
-//	RESTAPIの場合
-//	@DeleteMapping("/fee")
-	
-//	WEBアプリの場合
+
 	@PostMapping("/feedel")
 	public String Feedel(
 			@RequestParam("id") Integer id,

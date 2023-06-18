@@ -26,21 +26,16 @@ public class FeeService {
 //		return this.feedao.feeResult(id);
 	}
 	
-	public Integer Feecalc(List<Fee> feelist) {
-			Integer sum = 0;
-			for (int i = 0; i < feelist.size(); i++) {
-				sum += feelist.get(i).getTotal_fee();
-			}
-			return sum;
-	}
+
 	
-public void Feeadd(Integer id , String round_trip , int total_fee , Date use_date) {
-	Fee fee = new Fee();
-	fee.setId(id);
-	fee.setRound_trip(round_trip);
-	fee.setTotal_fee(total_fee);
-	fee.setUse_date(use_date);
-	feedao.Feeadd(fee);
+public void Feeadd(Fee fee) {
+//	fee.setId(id);
+//	fee.setRound_trip(round_trip);
+//	fee.setTotal_fee(total_fee);
+//	fee.setUse_date(use_date);
+	feerepository.save(fee);
+	
+//	feedao.Feeadd(fee);
 	
 }
 

@@ -2,15 +2,23 @@ package com.napa.app.entity;
 
 import java.sql.Date;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.SequenceGenerator;
 
 
 @Entity
+@IdClass(FeePK.class)
 public class Fee {
-//	feeテーブルより取得
 	@Id
     private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer fee_seq;
     private String round_trip;
 	private int total_fee;
     private Date use_date;
@@ -37,6 +45,12 @@ public class Fee {
 	}
 	public void setUse_date(Date use_date) {
 		this.use_date = use_date;
+	}
+//	public Integer getFee_seq() {
+		return fee_seq;
+	}
+	public void setFee_seq(Integer fee_seq) {
+		this.fee_seq = fee_seq;
 	}  
 
 }
