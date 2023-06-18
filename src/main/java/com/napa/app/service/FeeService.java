@@ -3,10 +3,13 @@ package com.napa.app.service;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import com.napa.app.Repository.FeeRepository;
 import com.napa.app.dao.FeeDao;
 import com.napa.app.entity.Fee;
 
@@ -15,10 +18,12 @@ import com.napa.app.entity.Fee;
 public class FeeService {
 	
 	@Autowired
-	FeeDao feedao;
+//	FeeDao feedao;
+	FeeRepository feerepository;
 	
-	public List<Fee> FeeGet(Integer id) {
-		return this.feedao.feeResult(id);
+	public Optional<Fee> FeeGet(@PathVariable("Id") Integer id) {
+		return feerepository.findById(id);
+//		return this.feedao.feeResult(id);
 	}
 	
 	public Integer Feecalc(List<Fee> feelist) {

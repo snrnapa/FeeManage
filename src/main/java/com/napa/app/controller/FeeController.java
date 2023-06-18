@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.napa.app.entity.Fee;
 import com.napa.app.entity.Worker;
@@ -27,19 +28,23 @@ public class FeeController {
 	
 //	従業員のFeeを取得する場合
 	@GetMapping("/fee")
-	public String index(
-			@RequestParam("id") Integer id,
-			Model model) {
+	@ResponseBody
+	public Object[] FeeGet(
+			@RequestParam("id") Integer id) {
+		Object[] array = new Object[2];
+		array[0] = workerservice.OneWorkerSelect(id);
+		array[1] = feeservice.FeeGet(id);
 		
-		Optional<Worker> oneworker = workerservice.OneWorkerSelect(id);
-		List<Fee> feelist = feeservice.FeeGet(id);
+//		Optional<Worker> oneworker = workerservice.OneWorkerSelect(id);
+//		Optional<Fee> fee = feeservice.FeeGet(id);
+		return array;
 	
-		Integer sum = feeservice.Feecalc(feelist);
-		
-			model.addAttribute("fee", feelist);
-			model.addAttribute("sumfee", sum);
-			model.addAttribute("oneworker", oneworker);
-				return "feepage";
+//		Integer sum = feeservice.Feecalc(feelist);
+//		
+//			model.addAttribute("fee", feelist);
+//			model.addAttribute("sumfee", sum);
+//			model.addAttribute("oneworker", oneworker);
+//				return "feepage";
 		}
 	
 	@PostMapping("/fee")
