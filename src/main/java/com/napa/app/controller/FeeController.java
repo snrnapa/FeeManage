@@ -1,6 +1,7 @@
 package com.napa.app.controller;
 	
 import java.util.List;
+import java.util.Optional;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class FeeController {
 			@RequestParam("id") Integer id,
 			Model model) {
 		
-		Worker oneworker = workerservice.OneWorkerSelect(id);
+		Optional<Worker> oneworker = workerservice.OneWorkerSelect(id);
 		List<Fee> feelist = feeservice.FeeGet(id);
 	
 		Integer sum = feeservice.Feecalc(feelist);

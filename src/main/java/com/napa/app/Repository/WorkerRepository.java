@@ -8,5 +8,6 @@ import com.napa.app.entity.Worker;
 @Repository
 public interface WorkerRepository extends JpaRepository<Worker, Integer>{
 	
+	
 
 }
