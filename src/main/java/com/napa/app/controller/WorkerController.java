@@ -33,8 +33,7 @@ public class WorkerController{
 
 	}
 		@PostMapping("/")
-//		@ResponseBody
-		
+		@ResponseBody
 			public List<Worker> AddWorker(@RequestBody Worker worker) {
 				workerservice.AddWorker(worker.getId(),worker.getFirst_name(),worker.getLast_name(),worker.getDept(),worker.getTeam());
 				List<Worker> workers = workerservice.AllWorkerSelect();
@@ -42,13 +41,15 @@ public class WorkerController{
 				
 				
 			}
-//		
-//		@RequestMapping("/delworker")
-//		public String Deleteworker(Worker worker) {
-//			workerservice.Deleteworker(worker.getId());
-//			return "redirect:/";
-//		}
-//		
+		
+		@PostMapping("/delworker")
+		@ResponseBody
+		public List<Worker> Deleteworker(@RequestBody Worker worker) {
+			workerservice.Deleteworker(worker.getId());
+			List<Worker> workers = workerservice.AllWorkerSelect();
+			return workers;
+		}
+		
 			
 }
 
