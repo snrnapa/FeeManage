@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="${title}">title</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+  
+  <p> Fee Result</p>
+  
+  <div class="headmenu">
+  	    <button type="button" onclick="back()" class="btn">Back</button>
+  
+  
+  </div>
+  
+
+<div style = "display: flex;">
+
+  <div th:if="${oneworker} !=null" th:object="${oneworker}" class="resultform">
+	    <h3 th:text = " 'ID: ' + *{id}"> </h3>
+	    <h3 th:text = " '氏名: ' + *{first_name} + '  ' + *{last_name} "> </h3>
+  	    <h3 th:text = "'支払金額: ¥' + ${sumfee}"> </h3>
+  </div>
+	
+	<div>
+		<form action="/fee" method="post" class="inputform">
+			<h3>New　History</h3>
+				<div>
+					<label for="workerID">ID</label>
+					 <input type="text" name="id" th:value="${oneworker.id}" readonly="readonly">
+				</div>
+				<div>
+					<input type="checkbox" checked="checked" name="round_trip"value="Yes">　往復の場合はチェック
+				</div>
+				<div>
+					<label for="workerfee">運賃（片道）</label>
+					<input type="text" name="total_fee" >
+				</div>
+				<div>
+					<label for="workerdate">日付</label>
+					<input type="date" name="use_date" id="date"></div>
+				<div class="submit-div">
+					<input type="submit" value="登録" class="btn">
+				</div>
+		</form>
+	</div>
+</div>
+		
+<hr>
+
+
+    <div th:if="${fee} !=null" th:object="${fee}" class ="mainlist">
+        <table class="workerlist">
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>use_date</th>
+                <th>total_fee</th>                
+                <th>round_trip</th>
+                <th>Delete</th>
+            </tr>
+ 
+            <tr th:each="result:${fee}" th:object="${result}">
+<!--                 <td th:text="*{id}">ID</td> -->
+                <td th:text="*{use_date}">Date</td>
+                <td th:text="'¥ ' + *{total_fee}">合計金額</td>
+                <td th:text="*{round_trip}">往復</td>
+                <td>
+	             <form action="/feedel" method="post">
+						<input type="hidden" name="id" th:value="*{id}"> 
+						<input type="hidden" name="use_date" th:value="*{use_date}"> 
+						<input type="submit" value="削除" class="btn">
+		 			</form>
+	 				</td>
+            </tr>
+
+        </table>
+    </div>
+
+
+
+<script type="text/javascript">
+	
+	window.onload = function () {
+	    var date = new Date();
+	    date.setDate(date.getDate());
+	    var yyyy = date.getFullYear();
+	    var mm = ("0" + (date.getMonth() + 1)).slice(-2);
+	    var dd = ("0" + date.getDate()).slice(-2);
+	    document.getElementById("date").value = yyyy + '-' + mm + '-' + dd;
+	  }
+	function back(){
+		window.location.href = "/";
+	}
+
+</script>
+
+
+  </body>
+</html>

@@ -32,6 +32,7 @@ public class WorkerController{
 //		return workers;
 
 	}
+//		Workerのinsertを行う
 		@PostMapping("/")
 		@ResponseBody
 			public List<Worker> AddWorker(@RequestBody Worker worker) {

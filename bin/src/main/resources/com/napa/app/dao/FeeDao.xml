@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.napa.app.dao.FeeDao">
+	<select id="feeResult" resultType="com.napa.app.entity.Fee">
+		SELECT * From fee WHERE id = #{id} order by use_date
+	</select>
+
+
+
+	<insert id="Feeadd" parameterType="com.napa.app.entity.Fee">
+		insert into fee (id,round_trip,total_fee,use_date)
+		values (#{id},#{round_trip},#{total_fee},#{use_date})
+	</insert>
+	
+	<insert id="Feedel" parameterType="com.napa.app.entity.Fee">
+		delete from fee where id = #{id} and use_date = #{use_date};
+	</insert>
+
+</mapper>

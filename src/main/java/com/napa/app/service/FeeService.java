@@ -3,10 +3,13 @@ package com.napa.app.service;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import com.napa.app.Repository.FeeRepository;
 import com.napa.app.dao.FeeDao;
 import com.napa.app.entity.Fee;
 
@@ -16,31 +19,30 @@ public class FeeService {
 	
 	@Autowired
 	FeeDao feedao;
+	@Autowired
+	FeeRepository feerepository;
 	
-	public List<Fee> FeeGet(Integer id) {
-		return this.feedao.feeResult(id);
+	public Optional<Fee> FeeGet(@PathVariable("Id") Integer id) {
+		return feerepository.findById(id);
+//		return this.feedao.feeResult(id);
 	}
 	
-	public Integer Feecalc(List<Fee> feelist) {
-			Integer sum = 0;
-			for (int i = 0; i < feelist.size(); i++) {
-				sum += feelist.get(i).getTotal_fee();
-			}
-			return sum;
-	}
+
 	
-public void Feeadd(Integer id , String round_trip , int total_fee , Date use_date) {
-	Fee fee = new Fee();
-	fee.setId(id);
-	fee.setRound_trip(round_trip);
-	fee.setTotal_fee(total_fee);
-	fee.setUse_date(use_date);
-	feedao.Feeadd(fee);
+public void Feeadd(Fee fee) {
+
+	feerepository.save(fee);
 	
 }
 
-public void Feedel(Integer id , Date use_date) {
-	feedao.Feedel(id,use_date);
+public void Feedel(Fee fee) {
+	
+	Integer id = fee.getId();
+	Integer fee_seq = fee.getFee_seq();
+	Date use_date = fee.getUse_date();
+	
+	
+	feedao.Feedel(id,fee_seq,use_date);
 	
 }
 
