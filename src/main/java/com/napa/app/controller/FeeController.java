@@ -64,26 +64,20 @@ public class FeeController {
 	
 	
 
-	@PostMapping("/feedel")
-	public String Feedel(
-			@RequestParam("id") Integer id,
-			@RequestParam("use_date") Date use_date,
-			Model model){
+	@PostMapping("/fee/del")
+	@ResponseBody
+	public Object[]Feedel(@RequestBody Fee fee){
 		
 		
-		feeservice.Feedel(id, use_date);
+		feeservice.Feedel(fee);
 		
+		Object[] array = new Object[2];
+		Integer id = fee.getId();
 //		Workerと、Feeをリロードする。
-		List<Fee> feelist = feeservice.FeeGet(id);
-		Worker oneworker = workerservice.OneWorkerSelect(id);
-		Integer sum = feeservice.Feecalc(feelist);
+		array[0] = feeservice.FeeGet(id);
+		array[1] = workerservice.OneWorkerSelect(id);
 		
-		
-		model.addAttribute("oneworker", oneworker);
-		model.addAttribute("sumfee", sum);
-		model.addAttribute("fee", feelist);
-	
-		return "feepage";
+		return array;
 	}
 	
 

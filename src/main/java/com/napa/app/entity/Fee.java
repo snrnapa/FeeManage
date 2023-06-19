@@ -12,12 +12,10 @@ import jakarta.persistence.SequenceGenerator;
 
 
 @Entity
-@IdClass(FeePK.class)
+//@IdClass(FeePK.class)
 public class Fee {
 	@Id
     private Integer id;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer fee_seq;
     private String round_trip;
 	private int total_fee;
@@ -46,7 +44,7 @@ public class Fee {
 	public void setUse_date(Date use_date) {
 		this.use_date = use_date;
 	}
-//	public Integer getFee_seq() {
+	public Integer getFee_seq() {
 		return fee_seq;
 	}
 	public void setFee_seq(Integer fee_seq) {

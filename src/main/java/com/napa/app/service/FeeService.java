@@ -18,7 +18,8 @@ import com.napa.app.entity.Fee;
 public class FeeService {
 	
 	@Autowired
-//	FeeDao feedao;
+	FeeDao feedao;
+	@Autowired
 	FeeRepository feerepository;
 	
 	public Optional<Fee> FeeGet(@PathVariable("Id") Integer id) {
@@ -29,18 +30,19 @@ public class FeeService {
 
 	
 public void Feeadd(Fee fee) {
-//	fee.setId(id);
-//	fee.setRound_trip(round_trip);
-//	fee.setTotal_fee(total_fee);
-//	fee.setUse_date(use_date);
+
 	feerepository.save(fee);
-	
-//	feedao.Feeadd(fee);
 	
 }
 
-public void Feedel(Integer id , Date use_date) {
-	feedao.Feedel(id,use_date);
+public void Feedel(Fee fee) {
+	
+	Integer id = fee.getId();
+	Integer fee_seq = fee.getFee_seq();
+	Date use_date = fee.getUse_date();
+	
+	
+	feedao.Feedel(id,fee_seq,use_date);
 	
 }
 
