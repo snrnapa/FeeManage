@@ -6,7 +6,7 @@ CREATE TABLE if not exists fee(
     round_trip character varying(5),
     total_fee integer,
     use_date date not null,
-    PRIMARY KEY(id,fee_seq)
+    PRIMARY KEY(id,fee_seq,use_date)
 );
 
 

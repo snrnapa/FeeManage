@@ -7,6 +7,7 @@ import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import com.napa.app.service.FeeService;
 import com.napa.app.service.WorkerService;
 
 @Controller
+@CrossOrigin(origins = "*")
 public class FeeController {
 	
 	@Autowired
