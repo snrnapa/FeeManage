@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.napa.app.entity.Fee;
+import com.napa.app.entity.FeePK;
 import com.napa.app.entity.Worker;
 import com.napa.app.service.FeeService;
 import com.napa.app.service.WorkerService;

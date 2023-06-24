@@ -12,19 +12,24 @@ import jakarta.persistence.SequenceGenerator;
 
 
 @Entity
-//@IdClass(FeePK.class)
+@IdClass(FeePK.class)
 public class Fee {
 	@Id
     private Integer id;
+	@Id
 	private Integer fee_seq;
     private String round_trip;
-	private int total_fee;
-    private Date use_date;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getFee_seq() {
+		return fee_seq;
+	}
+	public void setFee_seq(Integer fee_seq) {
+		this.fee_seq = fee_seq;
 	}
 	public String getRound_trip() {
 		return round_trip;
@@ -44,11 +49,11 @@ public class Fee {
 	public void setUse_date(Date use_date) {
 		this.use_date = use_date;
 	}
-	public Integer getFee_seq() {
-		return fee_seq;
-	}
-	public void setFee_seq(Integer fee_seq) {
-		this.fee_seq = fee_seq;
-	}  
+	private int total_fee;
+	@Id
+    private Date use_date;
+
+
+
 
 }

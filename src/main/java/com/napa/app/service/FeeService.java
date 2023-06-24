@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.napa.app.Repository.FeeRepository;
 import com.napa.app.dao.FeeDao;
 import com.napa.app.entity.Fee;
+import com.napa.app.entity.FeePK;
 
 
 @Service
@@ -22,8 +23,8 @@ public class FeeService {
 	@Autowired
 	FeeRepository feerepository;
 	
-	public Optional<Fee> FeeGet(@PathVariable("Id") Integer id) {
-		return feerepository.findById(id);
+	public List<Fee> FeeGet(@PathVariable("Id") Integer id) {
+		return feerepository.findByPrimarykeys(id);
 //		return this.feedao.feeResult(id);
 	}
 	
