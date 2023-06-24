@@ -25,12 +25,8 @@ public class WorkerController{
 	@ResponseBody
 	public List<Worker> getWorkers() {
 		List<Worker> worker = workerservice.AllWorkerSelect();
-//		System.out.println((worker.get(0)).getId());
-//		System.out.println("React");
+
 		return worker;
-		
-//		Worker workers = workerservice.AllWorkerSelect();
-//		return workers;
 
 	}
 //		Workerのinsertを行う

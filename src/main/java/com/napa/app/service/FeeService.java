@@ -25,7 +25,6 @@ public class FeeService {
 	
 	public List<Fee> FeeGet(@PathVariable("Id") Integer id) {
 		return feerepository.findByPrimarykeys(id);
-//		return this.feedao.feeResult(id);
 	}
 	
 

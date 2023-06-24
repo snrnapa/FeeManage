@@ -38,17 +38,10 @@ public class FeeController {
 		Object[] array = new Object[2];
 		array[0] = workerservice.OneWorkerSelect(id);
 		array[1] = feeservice.FeeGet(id);
-		
-//		Optional<Worker> oneworker = workerservice.OneWorkerSelect(id);
-//		Optional<Fee> fee = feeservice.FeeGet(id);
+
 		return array;
 	
-//		Integer sum = feeservice.Feecalc(feelist);
-//		
-//			model.addAttribute("fee", feelist);
-//			model.addAttribute("sumfee", sum);
-//			model.addAttribute("oneworker", oneworker);
-//				return "feepage";
+
 		}
 	
 	@PostMapping("/fee")
