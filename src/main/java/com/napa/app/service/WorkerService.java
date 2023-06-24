@@ -28,13 +28,8 @@ public class WorkerService {
 	}
 	
 	
-	public void AddWorker(Integer id,String first_name,String last_name,String dept,String team){
-		Worker worker = new Worker();
-		worker.setId(id);
-		worker.setFirst_name(first_name);
-		worker.setLast_name(last_name);
-		worker.setDept(dept);
-		worker.setTeam(team);
+	public void AddWorker(Worker worker){
+
 		workerrepository.save(worker);
 	}
 	

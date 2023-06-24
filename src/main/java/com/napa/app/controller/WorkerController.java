@@ -33,7 +33,7 @@ public class WorkerController{
 		@PostMapping("/")
 		@ResponseBody
 			public List<Worker> AddWorker(@RequestBody Worker worker) {
-				workerservice.AddWorker(worker.getId(),worker.getFirst_name(),worker.getLast_name(),worker.getDept(),worker.getTeam());
+				workerservice.AddWorker(worker);
 				List<Worker> workers = workerservice.AllWorkerSelect();
 				return workers;
 				
