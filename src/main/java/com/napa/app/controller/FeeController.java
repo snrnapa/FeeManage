@@ -33,13 +33,14 @@ public class FeeController {
 //	従業員のFeeを取得する場合
 	@GetMapping("/fee")
 	@ResponseBody
-	public Object[] FeeGet(
+	public List<Fee> FeeGet(
 			@RequestParam("id") Integer id) {
-		Object[] array = new Object[2];
-		array[0] = workerservice.OneWorkerSelect(id);
-		array[1] = feeservice.FeeGet(id);
+//		Reactでは、Fee以外の取得は不要。（React側で、workerを取り直すということは実装する予定である）
+//		Object[] array = new Object[2];
+//		array[0] = workerservice.OneWorkerSelect(id);
+		List<Fee> feelist = feeservice.FeeGet(id);
 
-		return array;
+		return feelist;
 	
 
 		}
