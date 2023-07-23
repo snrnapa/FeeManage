@@ -1,6 +1,7 @@
 package com.napa.app.service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class ReportService {
 
 
 
-	public Optional<Report> AllReportSelect(@PathVariable("Id") Integer id){
+	public List<Report> AllReportSelect(@PathVariable("Id") Integer id){
 		return reportrepository.findByPrimarykeys(id);
 	}
 	

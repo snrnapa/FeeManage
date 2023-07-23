@@ -25,9 +25,9 @@ public class ReportController{
 
 	@GetMapping("/report")
 	@ResponseBody
-	public Optional<Report> getReport(
+	public List<Report> getReport(
 			@RequestParam("id") Integer id) {
-		Optional<Report> report = reportservice.AllReportSelect(id);
+		List<Report> report = reportservice.AllReportSelect(id);
 
 		return report;
 
