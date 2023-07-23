@@ -19,7 +19,7 @@ public class ReportService {
 
 
 	public Optional<Report> AllReportSelect(@PathVariable("Id") Integer id){
-		return reportrepository.findById(id);
+		return reportrepository.findByPrimarykeys(id);
 	}
 	
 	

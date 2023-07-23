@@ -5,14 +5,28 @@ import java.sql.Time;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import lombok.Getter;
 import lombok.Setter;
 
 
-
+@IdClass(ReportPK.class)
 @Entity
 public class Report {
-public Integer getId() {
+	
+	//	feeテーブルより取得
+	@Id
+    private Integer id;
+	@Id
+	private Date atdate;
+	private String location;
+    private Time workstart;
+    private Time workend;
+    private Time reststart;
+    private Time restend;
+	
+	
+    public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -54,15 +68,7 @@ public Integer getId() {
 	public void setRestend(Time restend) {
 		this.restend = restend;
 	}
-	//	feeテーブルより取得
-	@Id
-    private Integer id;
-	private String location;
-	private Date atdate;
-    private Time workstart;
-    private Time workend;
-    private Time reststart;
-    private Time restend;
+
 }
     
     

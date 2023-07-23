@@ -24,7 +24,7 @@ CREATE TABLE if not exists worker(
 
 CREATE TABLE if not exists report(
     id integer NOT NULL,
-    atdate DATE,
+    atdate DATE NOT NULL,
     location character varying(50),
     workstart TIME,
     workend TIME,

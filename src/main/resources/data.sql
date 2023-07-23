@@ -158,6 +158,7 @@ insert into fee ( id, fee_seq,round_trip, total_fee, use_date) VALUES ( '2', '2'
 
 
 insert into report ( id,location,atdate,workstart, workend,reststart,restend) VALUES ( '1','出社','2023-07-01' ,'9:00:00','18:00:00','12:00:00','13:00:00');
+insert into report ( id,location,atdate,workstart, workend,reststart,restend) VALUES ( '1','出社','2023-07-02' ,'9:00:00','18:00:00','12:00:00','13:00:00');
 
 
 
