@@ -34,8 +34,6 @@ CREATE TABLE if not exists report(
 );
 
 
-
-
 CREATE TABLE if not exists effort(
     id integer NOT NULL,
     atdate DATE NOT NULL,
@@ -43,4 +41,11 @@ CREATE TABLE if not exists effort(
     projno character varying(6),
     workstart TIME,
     workend TIME
+);
+
+CREATE TABLE if not exists project(
+    projno character varying(6) NOT NULL,
+    projectname character varying(50),
+    customerid character varying(10)
+
 );

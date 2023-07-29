@@ -163,5 +163,6 @@ insert into report ( id,location,atdate,workstart, workend,reststart,restend) VA
 
 insert into effort ( id,atdate,seq,projno,workstart, workend) VALUES ( '1','2023-07-01' ,'1','AB1111','9:00:00','18:00:00');
 insert into effort ( id,atdate,seq,projno,workstart, workend) VALUES ( '1','2023-07-01' ,'2','AB1111','9:00:00','18:00:00');
-    
+
+insert into project (projno,projectname,customerid,leaderid) VALUES ( '1','ええんやでプロジェクト' ,'EEDE001122','2');
    
