@@ -45,7 +45,7 @@ public class Effort {
 	public String getProjno() {
 		return projno;
 	}
-	public void setProjno(Integer projno) {
+	public void setProjno(String projno) {
 		this.projno = projno;
 	}
 	public Time getWorkstart() {
