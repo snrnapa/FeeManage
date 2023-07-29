@@ -32,3 +32,15 @@ CREATE TABLE if not exists report(
     restend TIME
 
 );
+
+
+
+
+CREATE TABLE if not exists effort(
+    id integer NOT NULL,
+    atdate DATE NOT NULL,
+    seq integer not NULL,
+    projno character varying(6),
+    workstart TIME,
+    workend TIME
+);

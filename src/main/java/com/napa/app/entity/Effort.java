@@ -21,7 +21,7 @@ public class Effort {
 	private Date atdate;
 	@Id
 	private Integer seq;
-    private Integer projno;
+    private String projno;
     private Time workstart;
     private Time workend;
 	public Integer getId() {
@@ -42,7 +42,7 @@ public class Effort {
 	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
-	public Integer getProjno() {
+	public String getProjno() {
 		return projno;
 	}
 	public void setProjno(Integer projno) {
