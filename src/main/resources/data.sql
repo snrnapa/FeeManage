@@ -2395,7 +2395,7 @@ VALUES (
         '1',
         'AB1111',
         '9:00:00',
-        '18:00:00'
+        '12:00:00'
     );
 
 insert into
@@ -2411,9 +2411,9 @@ VALUES (
         '1',
         '2023-07-01',
         '2',
-        'AB1111',
-        '9:00:00',
-        '18:00:00'
+        'BB1111',
+        '12:00:00',
+        '19:00:00'
     );
 
 insert into
@@ -2431,5 +2431,23 @@ VALUES (
     );
 
 insert into
+    project (
+        projno,
+        projectname,
+        customerid,
+        leaderid
+    )
+VALUES (
+        'BB1111',
+        'やれるがなプロジェクト',
+        'YYYY001122',
+        '2'
+    );
+
+insert into
     customer (customerid, customername)
 VALUES ('EEDE001122', 'ええんやで株式会社');
+
+insert into
+    customer (customerid, customername)
+VALUES ('YYYY001122', 'やれるがな株式会社');

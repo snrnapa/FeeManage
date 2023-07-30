@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class EffortProjectDto {
+	private Integer id;
+
 	private String projno;
 	private String projectname;
 	private String customerid;
@@ -14,6 +16,14 @@ public class EffortProjectDto {
 	private Date atdate;
 	private Time workstart;
 	private Time workend;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getProjno() {
 		return projno;

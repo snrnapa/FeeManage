@@ -49,7 +49,9 @@ public class EffortService {
 
 			EffortProjectDto epd = new EffortProjectDto();
 
+			epd.setId(worker.getId());
 			epd.setAtdate(targeteffort.getAtdate());
+			epd.setProjno(project.getProjno());
 			epd.setProjectname(project.getProjectname());
 			epd.setCustomerid(customer.getCustomerid());
 			epd.setCustomername(customer.getCustomername());
@@ -57,6 +59,8 @@ public class EffortService {
 			epd.setAtdate(targeteffort.getAtdate());
 			epd.setLeaderid(project.getLeaderid());
 			epd.setLeadername(worker.getLast_name() + " " + worker.getFirst_name());
+			epd.setWorkstart(targeteffort.getWorkstart());
+			epd.setWorkend(targeteffort.getWorkend());
 
 			epdlist.add(epd);
 		}
