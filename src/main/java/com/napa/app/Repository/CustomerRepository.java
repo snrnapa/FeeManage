@@ -5,13 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.napa.app.entity.Effort;
-import com.napa.app.entity.EffortPK;
+import com.napa.app.entity.Customer;
 
 @Repository
-public interface EffortRepository extends JpaRepository<Effort, EffortPK> {
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 
-	@Query("select o from Effort o where o.id = :id")
-	Effort findByPrimarykeys(@Param("id") int id);
+	Customer findByCustomerid(String customerid);
 
 }
