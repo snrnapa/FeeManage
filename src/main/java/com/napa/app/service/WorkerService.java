@@ -1,7 +1,6 @@
 package com.napa.app.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,29 +11,25 @@ import com.napa.app.entity.Worker;
 
 @Service
 public class WorkerService {
-	
+
 	@Autowired
 	private WorkerRepository workerrepository;
 
-
-
-	public List<Worker> AllWorkerSelect(){
+	public List<Worker> AllWorkerSelect() {
 		return workerrepository.findAll();
 	}
-	
-	
-	public Optional<Worker> OneWorkerSelect(@PathVariable("id") Integer id){
-		return workerrepository.findById(id);
+
+	public Worker OneWorkerSelect(@PathVariable("id") Integer id) {
+		return workerrepository.findByPrimarykeys(id);
 	}
-	
-	
-	public void AddWorker(Worker worker){
+
+	public void AddWorker(Worker worker) {
 
 		workerrepository.save(worker);
 	}
-	
-	public void Deleteworker(@PathVariable("id") Integer id){
-	
+
+	public void Deleteworker(@PathVariable("id") Integer id) {
+
 		workerrepository.deleteById(id);
 	}
 
