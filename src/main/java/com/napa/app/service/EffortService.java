@@ -56,7 +56,7 @@ public class EffortService {
 			epd.setLeaderid(project.getLeaderid());
 			epd.setAtdate(targeteffort.getAtdate());
 			epd.setLeaderid(project.getLeaderid());
-			epd.setLeadername(worker.getLast_name() + worker.getFirst_name());
+			epd.setLeadername(worker.getLast_name() + " " + worker.getFirst_name());
 
 			epdlist.add(epd);
 		}
