@@ -2432,4 +2432,4 @@ VALUES (
 
 insert into
     customer (customerid, customername)
-VALUES ('BB112222', 'ええんやで株式会社');
+VALUES ('EEDE001122', 'ええんやで株式会社');

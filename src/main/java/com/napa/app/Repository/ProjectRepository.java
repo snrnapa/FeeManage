@@ -13,6 +13,6 @@ import com.napa.app.entity.Project;
 public interface ProjectRepository extends JpaRepository<Project, String> {
 
 	@Query("select o from Project o where o.projno = :projno")
-	List<Project> findByPrimarykeys(@Param("projno") String projno);
+	Project findByPrimarykeys(@Param("projno") String projno);
 
 }

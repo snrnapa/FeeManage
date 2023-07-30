@@ -1,5 +1,6 @@
 package com.napa.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,26 +30,42 @@ public class EffortController {
 	@Autowired
 	EffortService effortservice;
 
-	@Autowired
-	ProjectService projectservice;
-
-	@Autowired
-	CustomerService customerservice;
-
 	@GetMapping("/effort")
 	@ResponseBody
-	public EffortProjectDto getEffort(
+	public List<EffortProjectDto> getEffort(
 			@RequestParam("id") Integer id) {
 
-		Effort effort = effortservice.AllEffortSelect(id);
-		String targetprojno = effort.getProjno();
-		Project project = projectservice.AllProjectSelect(targetprojno);
-		String targetcustomerid = project.getCustomerid();
-		Customer customer = customerservice.AllCustomerSelect(targetcustomerid);
+		// ArrayList<EffortProjectDto> epdlist = new ArrayList<EffortProjectDto>();
+		// List<Effort> effort = effortservice.AllEffortSelect(id);
 
-		EffortProjectDto epd = new EffortProjectDto(effort, project, customer);
+		// for (int i = 0; i < effort.size(); i++) {
 
-		return epd;
+		// Effort targeteffort = effort.get(i);
+		// String targetprojno = targeteffort.getProjno();
+
+		// Project project = projectservice.AllProjectSelect(targetprojno);
+
+		// String targetcustomerid = project.getCustomerid();
+		// Customer customer = customerservice.AllCustomerSelect(targetcustomerid);
+
+		// EffortProjectDto epd = new EffortProjectDto();
+
+		// epd.setAtdate(targeteffort.getAtdate());
+		// epd.setProjectname(project.getProjectname());
+		// epd.setCustomerid(customer.getCustomerid());
+		// epd.setCustomername(customer.getCustomername());
+		// epd.setLeaderid(project.getLeaderid());
+		// epd.setAtdate(targeteffort.getAtdate());
+		// epd.setWorkstart(effort.getWorkstart());
+		// epd.setLeaderid(project.getLeaderid());
+
+		// epd.setLeadername(project.getLeadername());
+
+		// }
+
+		List<EffortProjectDto> epdlistresult = effortservice.AllEffortSelect(id);
+
+		return epdlistresult;
 
 	}
 
