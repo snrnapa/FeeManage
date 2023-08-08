@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,9 +18,9 @@ import com.napa.app.entity.Report;
 import com.napa.app.service.ReportService;
 
 @RestController
-//@Controller
+// @Controller
 @CrossOrigin(origins = "*")
-public class ReportController{
+public class ReportController {
 
 	@Autowired
 	ReportService reportservice;
@@ -33,6 +35,13 @@ public class ReportController{
 
 	}
 
+	@PostMapping("/report")
+	public void UpdateReport(
+			@RequestBody Report report) {
+		reportservice.ReportUpdate(report);
+
+		// System.out.println(report.getRestend());
+
+	}
 
 }
-
