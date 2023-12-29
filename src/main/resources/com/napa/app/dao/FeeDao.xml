@@ -7,7 +7,7 @@
 
 	
 	<insert id="Feedel" parameterType="com.napa.app.entity.Fee">
-		delete from fee where id = #{id} and fee_seq = #{fee_seq} and use_date = #{use_date};
+		delete from t_fee where id = #{id} and fee_seq = #{fee_seq} and use_date = #{use_date};
 	</insert>
 
 </mapper>

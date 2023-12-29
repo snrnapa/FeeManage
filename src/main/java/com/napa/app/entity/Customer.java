@@ -2,8 +2,10 @@ package com.napa.app.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "m_customer")
 public class Customer {
 
 	// Projectテーブルより取得

@@ -10,14 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.napa.app.entity.Report;
 import com.napa.app.entity.ReportPK;
 
-
 @Repository
-public interface ReportRepository extends JpaRepository<Report,ReportPK>{
-	
-	 @Query("select o from Report o where o.id = :id")
-	    List<Report> findByPrimarykeys(@Param("id")int id);
+public interface ReportRepository extends JpaRepository<Report, ReportPK> {
 
-	
-	
+	@Query("select o from Report o where o.id = :id")
+	List<Report> findByPrimarykeys(@Param("id") int id);
 
 }
