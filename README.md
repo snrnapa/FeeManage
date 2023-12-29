@@ -1,27 +1,12 @@
-ポンコツじゃないメッセージです
 ## URL集
-ぽんこつ
 
 
 http://localhost:8080/
 
-http://localhost:8080/h2-console
-
-h2databaseのコンソール画面　spring boot起動後に入れるようになります。
-接続については、application.propertiesを見てください。
-
-
-![image](https://github.com/snrnapa/FeeManage/assets/60351331/724e251b-7498-4962-a173-651d05cf227f)
 
 
 ***
 
-## 増幅用SQL
-以下2つのファイルを参考にしてください。
-以下はspring bootが起動されると、自動で実行されるクエリです。
-FeeManage/src/main/resources/data.sql/
-data.sql
-schema.sql
 
 ***
 ***
