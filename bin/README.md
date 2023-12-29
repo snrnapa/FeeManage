@@ -1,6 +1,26 @@
-ポンコツじゃないメッセージです
+## Getting Start
+
+### DB
+- DockerでPostgresqlを構築できる。
+
+```docker
+# コンテナ立ち上げ
+docker-compose up -d
+
+# コンテナに入る
+docker-compose exec apdb bash
+
+# psqlログイン
+psql -U feeuser
+
+\q
+
+# コンテナを削除する
+docker-compose down
+
+```
+
 ## URL集
-ぽんこつ
 
 
 http://localhost:8080/
